@@ -1,33 +1,34 @@
 <!DOCTYPE html>
-<!-- saved from url=(0046)file:///C:/Users/Olivia/Downloads/index_1.html -->
+<!-- saved from url=(0046)file:///C:/Users/Olivia/Downloads/index_2.html -->
 <html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ParcPlan — Parc Animalier Ginasservis</title>
-<meta name="theme-color" content="#1D9E75">
+<meta name="theme-color" content="#1a1a2e">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --green:#1D9E75;--green-l:#E1F5EE;--green-d:#085041;
-  --amber:#BA7517;--amber-l:#FAEEDA;
-  --red:#A32D2D;--red-l:#FCEBEB;
-  --blue:#185FA5;--blue-l:#E6F1FB;
-  --purple:#534AB7;--purple-l:#EEEDFE;
-  --gray:#5F5E5A;--gray-l:#F1EFE8;
-  --bg:#f8f9fa;--card:#fff;--border:#e0e0e0;
-  --text:#2C2C2A;--text2:#5F5E5A;
+  --bg:#0f0f1a;--bg2:#1a1a2e;--bg3:#16213e;--card:#1e1e35;--card2:#252540;
+  --border:#2d2d4e;--border2:#3d3d6e;
+  --text:#e8e8f0;--text2:#9090b0;--text3:#6060a0;
+  --green:#1fba85;--green-l:rgba(31,186,133,.15);--green-d:#0d8a60;
+  --amber:#e8a020;--amber-l:rgba(232,160,32,.15);
+  --red:#e05050;--red-l:rgba(224,80,80,.15);
+  --blue:#4090e0;--blue-l:rgba(64,144,224,.15);
+  --purple:#8060d0;--purple-l:rgba(128,96,208,.15);
 }
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 .hidden{display:none!important}
+input,select,textarea,button{font-family:inherit}
 
-/* LOGIN */
+/* ── LOGIN ── */
 #login{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem;background:var(--bg)}
-.login-logo .fallback{width:80px;height:80px;border-radius:50%;background:var(--green-l);display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 10px}
-.login-title{font-size:22px;font-weight:700;color:var(--green-d);text-align:center;margin-bottom:2px}
+.login-logo .fallback{width:80px;height:80px;border-radius:50%;background:var(--green-l);border:2px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 12px}
+.login-title{font-size:24px;font-weight:700;color:var(--green);text-align:center;margin-bottom:2px}
 .login-sub{font-size:13px;color:var(--text2);text-align:center;margin-bottom:24px}
-.user-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:360px;margin-bottom:20px}
+.user-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:380px;margin-bottom:20px}
 .user-card{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:16px 12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;transition:all .2s}
-.user-card:hover{border-color:var(--green);transform:translateY(-2px)}
+.user-card:hover{border-color:var(--green);background:var(--card2);transform:translateY(-2px)}
 .avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;flex-shrink:0}
 .uname{font-size:13px;font-weight:600;color:var(--text);text-align:center}
 .urole{font-size:11px;color:var(--text2);text-align:center}
@@ -35,66 +36,62 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .pin-who{font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px}
 .pin-inst{font-size:12px;color:var(--text2);margin-bottom:16px}
 .pin-dots{display:flex;gap:10px;justify-content:center;margin-bottom:16px}
-.dot{width:14px;height:14px;border-radius:50%;border:2px solid var(--border);background:transparent;transition:all .15s}
+.dot{width:14px;height:14px;border-radius:50%;border:2px solid var(--border2);background:transparent;transition:all .15s}
 .dot.on{background:var(--green);border-color:var(--green)}
 .pin-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.pkey{padding:14px 0;border:1px solid var(--border);border-radius:12px;background:var(--bg);font-size:18px;font-weight:600;cursor:pointer;color:var(--text);transition:all .15s}
-.pkey:hover{background:var(--green-l);border-color:var(--green)}
+.pkey{padding:14px 0;border:1px solid var(--border);border-radius:12px;background:var(--bg3);font-size:18px;font-weight:600;cursor:pointer;color:var(--text);transition:all .15s}
+.pkey:hover{background:var(--green-l);border-color:var(--green);color:var(--green)}
 .pkey:active{transform:scale(.94)}
 .pin-err{font-size:12px;color:var(--red);margin-top:10px;min-height:18px}
 .back-btn{margin-top:12px;font-size:12px;color:var(--text2);background:none;border:none;cursor:pointer;text-decoration:underline}
 
-/* APP */
+/* ── APP ── */
 #app{min-height:100vh;display:flex;flex-direction:column}
-.topbar{background:var(--card);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.topbar{background:var(--bg2);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
 .topbar-left{display:flex;align-items:center;gap:10px}
 .top-name{font-size:15px;font-weight:700;color:var(--text)}
 .top-role{font-size:11px;color:var(--text2)}
-.topbar-right{display:flex;align-items:center;gap:8px}
-.top-date{font-size:11px;color:var(--text2)}
 .logout{font-size:12px;padding:5px 10px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:pointer}
 .logout:hover{background:var(--red-l);border-color:var(--red);color:var(--red)}
-.tabs{background:var(--card);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;padding:0 12px}
-.tab{padding:12px 16px;font-size:13px;font-weight:500;color:var(--text2);border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap;transition:all .15s}
+.tabs{background:var(--bg2);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;padding:0 12px}
+.tab{padding:12px 16px;font-size:13px;font-weight:500;color:var(--text2);border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap;transition:all .15s;background:none;border-top:none;border-left:none;border-right:none}
 .tab.on{color:var(--green);border-bottom-color:var(--green)}
 .content{flex:1;padding:16px;max-width:720px;margin:0 auto;width:100%}
 
-/* DATE BANNER */
-.date-banner{background:var(--green-d);color:#fff;border-radius:14px;padding:12px 18px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
-.date-banner-left .date-big{font-size:20px;font-weight:700;text-transform:capitalize}
-.date-banner-left .date-small{font-size:12px;opacity:.8;margin-top:2px}
-.date-banner-right{text-align:right}
-.date-banner-right .time-now{font-size:22px;font-weight:700}
-.date-banner-right .time-label{font-size:11px;opacity:.7}
+/* ── DATE BANNER ── */
+.date-banner{background:linear-gradient(135deg,#1a2a3a,#0d1f2d);border:1px solid var(--green-d);border-radius:16px;padding:14px 18px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
+.date-big{font-size:18px;font-weight:700;color:var(--green);text-transform:capitalize}
+.date-small{font-size:12px;color:var(--text2);margin-top:2px}
+.time-now{font-size:26px;font-weight:700;color:var(--text);font-variant-numeric:tabular-nums}
+.time-label{font-size:10px;color:var(--text2);text-align:right}
 
-/* ALERTS */
-.alert{border-radius:12px;padding:10px 14px;margin-bottom:10px;font-size:13px;display:flex;align-items:flex-start;gap:8px}
-.alert.danger{background:var(--red-l);color:var(--red)}
-.alert.warn{background:var(--amber-l);color:var(--amber)}
-.alert.ok{background:var(--green-l);color:var(--green-d)}
-.alert.info{background:var(--blue-l);color:var(--blue)}
-.alert-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+/* ── ALERTS ── */
+.alert{border-radius:12px;padding:10px 14px;margin-bottom:10px;font-size:13px;display:flex;align-items:flex-start;gap:8px;border:1px solid}
+.alert.danger{background:var(--red-l);color:#ff8080;border-color:rgba(224,80,80,.3)}
+.alert.warn{background:var(--amber-l);color:#ffc060;border-color:rgba(232,160,32,.3)}
+.alert.ok{background:var(--green-l);color:var(--green);border-color:rgba(31,186,133,.3)}
+.alert.info{background:var(--blue-l);color:#70b0ff;border-color:rgba(64,144,224,.3)}
 
-/* STATS */
+/* ── STATS ── */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
 .stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px 8px;text-align:center}
 .stat-n{font-size:24px;font-weight:700}
 .stat-l{font-size:10px;color:var(--text2);margin-top:2px}
 .cg{color:var(--green)}.ca{color:var(--amber)}.cr{color:var(--red)}.cb{color:var(--blue)}
-.progbar{height:6px;background:var(--gray-l);border-radius:3px;margin-bottom:14px;overflow:hidden}
+.progbar{height:6px;background:var(--card2);border-radius:3px;margin-bottom:14px;overflow:hidden}
 .progfill{height:100%;background:var(--green);border-radius:3px;transition:width .5s}
 
-/* FILTERS */
+/* ── FILTERS ── */
 .filters{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
 .fbtn{font-size:12px;padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:var(--card);color:var(--text2);cursor:pointer;transition:all .15s}
-.fbtn.on{background:var(--green-l);color:var(--green-d);border-color:var(--green);font-weight:600}
+.fbtn.on{background:var(--green-l);color:var(--green);border-color:var(--green);font-weight:600}
 
-/* TASKS */
+/* ── TASKS ── */
 .task{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 14px;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start;transition:all .2s}
-.task.done{border-color:#9FE1CB;background:#f2fcf8}
-.task.late{border-color:#F7C1C1;background:#fff5f5;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{border-color:#F7C1C1}50%{border-color:var(--red)}}
-.ck{width:28px;height:28px;min-width:28px;border-radius:50%;border:2px solid var(--border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all .2s;margin-top:2px}
+.task.done{border-color:var(--green-d);background:rgba(31,186,133,.07)}
+.task.late{border-color:var(--red);background:var(--red-l);animation:blink 2s infinite}
+@keyframes blink{0%,100%{border-color:rgba(224,80,80,.4)}50%{border-color:var(--red)}}
+.ck{width:28px;height:28px;min-width:28px;border-radius:50%;border:2px solid var(--border2);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all .2s;margin-top:2px}
 .ck.done{background:var(--green);border-color:var(--green);color:#fff}
 .ck.late{background:var(--red);border-color:var(--red);color:#fff}
 .task-body{flex:1;min-width:0}
@@ -102,156 +99,163 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .task-name{font-size:14px;font-weight:600;color:var(--text)}
 .task-name.done{text-decoration:line-through;color:var(--text2)}
 .badge{font-size:10px;padding:2px 8px;border-radius:20px;font-weight:600}
-.bm{background:var(--blue-l);color:#0C447C}
-.bmi{background:var(--amber-l);color:#633806}
-.bs{background:var(--purple-l);color:#3C3489}
-.bc{background:var(--green-l);color:var(--green-d)}
-.blate{background:var(--red-l);color:var(--red)}
-.task-meta{font-size:12px;color:var(--text2)}
+.bm{background:var(--blue-l);color:#70b0ff}
+.bmi{background:var(--amber-l);color:#ffc060}
+.bs{background:var(--purple-l);color:#c090ff}
+.bc{background:var(--green-l);color:var(--green)}
+.blate{background:var(--red-l);color:#ff8080}
+.task-meta{font-size:12px;color:var(--text2);margin-top:3px}
 .task-stamp{font-size:11px;color:var(--green);margin-top:3px;font-weight:500}
-.task-plage{font-size:11px;color:var(--text2);margin-top:2px}
-.task-days{font-size:11px;color:var(--blue);margin-top:2px}
+.task-actions{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.mod-btn{font-size:11px;padding:4px 10px;border-radius:8px;border:1px solid var(--border2);background:var(--card2);color:var(--text2);cursor:pointer}
+.mod-btn:hover{border-color:var(--amber);color:var(--amber)}
+.mod-form{background:var(--bg3);border:1px solid var(--border2);border-radius:10px;padding:10px;margin-top:8px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mod-form .full{grid-column:1/-1}
+.mfinput{width:100%;font-size:12px;padding:6px 8px;border-radius:7px;border:1px solid var(--border);background:var(--bg2);color:var(--text)}
+.mfinput:focus{outline:none;border-color:var(--green)}
+.mfselect{width:100%;font-size:12px;padding:6px 8px;border-radius:7px;border:1px solid var(--border);background:var(--bg2);color:var(--text)}
+.mf-save{padding:5px 14px;border-radius:7px;border:none;background:var(--green);color:#fff;font-size:12px;font-weight:700;cursor:pointer}
+.mf-cancel{padding:5px 10px;border-radius:7px;border:1px solid var(--border);background:transparent;color:var(--text2);font-size:12px;cursor:pointer}
 
-/* OBSERVATION */
+/* ── OBSERVATION ── */
 .obs-card{background:var(--card);border:1.5px solid var(--amber);border-radius:14px;padding:14px;margin-top:16px}
 .obs-card.saved{border-color:var(--green)}
-.obs-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.obs-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .obs-req{font-size:10px;padding:2px 8px;border-radius:20px;background:var(--amber-l);color:var(--amber);font-weight:700}
-.obs-req.ok{background:var(--green-l);color:var(--green-d)}
+.obs-req.ok{background:var(--green-l);color:var(--green)}
 .obs-sub{font-size:12px;color:var(--text2);margin-bottom:10px}
-.obs-ta{width:100%;min-height:80px;resize:vertical;border-radius:10px;border:1px solid var(--border);padding:10px;font-size:13px;font-family:inherit;color:var(--text);background:var(--bg)}
+.obs-ta{width:100%;min-height:80px;resize:vertical;border-radius:10px;border:1px solid var(--border);padding:10px;font-size:13px;color:var(--text);background:var(--bg3)}
 .obs-ta:focus{outline:none;border-color:var(--green)}
 .obs-save{margin-top:10px;padding:8px 20px;border-radius:10px;border:none;background:var(--green);color:#fff;font-size:13px;font-weight:700;cursor:pointer}
-.obs-save:hover{opacity:.85}
 
-/* WEEK VIEW */
+/* ── WEEK ── */
 .week-wrap{overflow-x:auto}
 .week-grid{display:grid;grid-template-columns:repeat(7,minmax(80px,1fr));gap:4px;min-width:560px}
-.day-col{border:1px solid var(--border);border-radius:10px;overflow:hidden}
-.day-hd{padding:8px 4px;text-align:center;background:var(--gray-l)}
-.day-hd.today{background:var(--green-l)}
+.day-col{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--card)}
+.day-hd{padding:8px 4px;text-align:center;background:var(--card2)}
+.day-hd.today{background:rgba(31,186,133,.2);border-bottom:2px solid var(--green)}
 .day-dn{font-size:10px;font-weight:600;color:var(--text2)}
 .day-dt{font-size:14px;font-weight:700;color:var(--text)}
-.day-hd.today .day-dn{color:var(--green)}
-.day-hd.today .day-dt{color:var(--green-d)}
+.day-hd.today .day-dn,.day-hd.today .day-dt{color:var(--green)}
 .day-task{font-size:10px;padding:3px 5px;margin:3px;border-radius:5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.dt-ok{background:var(--green-l);color:var(--green-d)}
-.dt-late{background:var(--red-l);color:var(--red)}
-.dt-pend{background:var(--gray-l);color:var(--gray)}
+.dt-ok{background:var(--green-l);color:var(--green)}
+.dt-late{background:var(--red-l);color:#ff8080}
+.dt-pend{background:var(--card2);color:var(--text2)}
 .week-legend{display:flex;gap:12px;margin-top:8px;flex-wrap:wrap}
 .leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2)}
 .leg-dot{width:10px;height:10px;border-radius:3px}
 
-/* ADMIN */
-.section-hd{font-size:12px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.08em;margin:20px 0 10px;display:flex;align-items:center;gap:6px}
+/* ── ADMIN ── */
+.section-hd{font-size:11px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.1em;margin:20px 0 10px;display:flex;align-items:center;gap:6px;padding-bottom:6px;border-bottom:1px solid var(--border)}
 .emp-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 14px;margin-bottom:8px;display:flex;align-items:flex-start;gap:12px}
 .emp-body{flex:1;min-width:0}
 .emp-name{font-size:14px;font-weight:700;color:var(--text)}
-.emp-role{font-size:12px;color:var(--text2);margin-bottom:6px}
+.emp-role{font-size:12px;color:var(--text2);margin-bottom:4px}
 .pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
 .pill{font-size:11px;padding:2px 9px;border-radius:20px;font-weight:600}
-.pill-g{background:var(--green-l);color:var(--green-d)}
-.pill-r{background:var(--red-l);color:var(--red)}
+.pill-g{background:var(--green-l);color:var(--green)}
+.pill-r{background:var(--red-l);color:#ff8080}
 .pill-a{background:var(--amber-l);color:var(--amber)}
-.obs-read{background:var(--gray-l);border-radius:8px;padding:8px 10px;margin-top:8px;font-size:12px;color:var(--text2);border-left:3px solid var(--green)}
-.param-row{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px 14px;margin-bottom:8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.param-label{flex:1;min-width:160px}
-.param-lname{font-size:13px;font-weight:600;color:var(--text)}
-.param-ldesc{font-size:11px;color:var(--text2);margin-top:2px}
-.param-input{font-size:13px;padding:6px 10px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text)}
-.param-input:focus{outline:none;border-color:var(--green)}
+.pill-b{background:var(--blue-l);color:#70b0ff}
+.obs-read{background:var(--bg3);border-radius:8px;padding:8px 10px;margin-top:8px;font-size:12px;color:var(--text2);border-left:3px solid var(--green)}
 .task-param{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px 14px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
 .task-param-body{flex:1}
 .task-param-name{font-size:13px;font-weight:600;color:var(--text)}
 .task-param-meta{font-size:11px;color:var(--text2);margin-top:2px}
 .task-param-days{font-size:11px;color:var(--blue);margin-top:2px}
-.del-btn{padding:5px 10px;border-radius:8px;border:1px solid var(--red-l);background:var(--red-l);color:var(--red);font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap}
-.del-btn:hover{background:var(--red);color:#fff}
-.add-form{background:var(--gray-l);border-radius:14px;padding:14px;margin-top:12px}
+.del-btn{padding:5px 10px;border-radius:8px;border:1px solid var(--red-l);background:var(--red-l);color:#ff8080;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap}
+.del-btn:hover{background:var(--red);color:#fff;border-color:var(--red)}
+.add-form{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;margin-top:12px}
 .add-form-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:12px}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .form-grid .full{grid-column:1/-1}
-.finput{width:100%;font-size:13px;padding:8px 10px;border-radius:8px;border:1px solid var(--border);background:var(--card);color:var(--text)}
+.finput{width:100%;font-size:13px;padding:8px 10px;border-radius:8px;border:1px solid var(--border);background:var(--bg2);color:var(--text)}
 .finput:focus{outline:none;border-color:var(--green)}
-.fselect{width:100%;font-size:13px;padding:8px 10px;border-radius:8px;border:1px solid var(--border);background:var(--card);color:var(--text)}
+.fselect{width:100%;font-size:13px;padding:8px 10px;border-radius:8px;border:1px solid var(--border);background:var(--bg2);color:var(--text)}
 .flabel{font-size:11px;color:var(--text2);margin-bottom:3px;display:block;font-weight:600}
-.save-btn{padding:9px 20px;border-radius:10px;border:none;background:var(--green);color:#fff;font-size:13px;font-weight:700;cursor:pointer}
+.save-btn{padding:9px 18px;border-radius:10px;border:none;background:var(--green);color:#fff;font-size:13px;font-weight:700;cursor:pointer}
 .save-btn:hover{opacity:.85}
+.save-btn.blue{background:var(--blue)}
+.save-btn.gray{background:var(--card2);color:var(--text2);border:1px solid var(--border)}
 .days-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:4px}
-.day-toggle{padding:6px 4px;border:1px solid var(--border);border-radius:8px;background:var(--card);font-size:11px;font-weight:600;cursor:pointer;text-align:center;color:var(--text2);transition:all .15s}
-.day-toggle.on{background:var(--green-l);border-color:var(--green);color:var(--green-d)}
-.alert-contact-box{background:var(--blue-l);border:1px solid var(--blue);border-radius:12px;padding:14px;margin-bottom:10px}
-.alert-contact-title{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:10px}
-.contact-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
-.contact-label{font-size:12px;font-weight:600;color:var(--text);width:100px;flex-shrink:0}
-.contact-input{flex:1;min-width:180px;font-size:13px;padding:7px 10px;border-radius:8px;border:1px solid var(--border);background:var(--card);color:var(--text)}
+.day-toggle{padding:7px 4px;border:1px solid var(--border);border-radius:8px;background:var(--bg2);font-size:11px;font-weight:600;cursor:pointer;text-align:center;color:var(--text2);transition:all .15s}
+.day-toggle.on{background:var(--green-l);border-color:var(--green);color:var(--green)}
+
+/* ── ALERT SETTINGS ── */
+.alert-box-admin{background:var(--card);border:1px solid var(--blue);border-radius:14px;padding:16px;margin-bottom:10px}
+.alert-box-title{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:12px}
+.contact-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.contact-label{font-size:12px;font-weight:600;color:var(--text);width:90px;flex-shrink:0}
+.contact-input{flex:1;min-width:160px;font-size:13px;padding:7px 10px;border-radius:8px;border:1px solid var(--border);background:var(--bg2);color:var(--text)}
 .contact-input:focus{outline:none;border-color:var(--blue)}
-.notif-toggle{padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:var(--card);font-size:12px;font-weight:600;cursor:pointer;color:var(--text2)}
-.notif-toggle.on{background:var(--green-l);border-color:var(--green);color:var(--green-d)}
-.save-contact-btn{padding:8px 18px;border-radius:10px;border:none;background:var(--blue);color:#fff;font-size:13px;font-weight:700;cursor:pointer;margin-top:8px}
-.save-contact-btn:hover{opacity:.85}
-.saved-msg{font-size:12px;color:var(--green);font-weight:600;margin-top:6px}
+.notif-toggle{padding:6px 12px;border-radius:20px;border:1px solid var(--border);background:var(--bg2);font-size:11px;font-weight:600;cursor:pointer;color:var(--text2)}
+.notif-toggle.on{background:var(--green-l);border-color:var(--green);color:var(--green)}
+.save-contact-btn{padding:8px 18px;border-radius:10px;border:none;background:var(--blue);color:#fff;font-size:13px;font-weight:700;cursor:pointer;margin-top:4px}
+.info-tip{font-size:11px;color:var(--text2);background:var(--bg3);border-radius:8px;padding:8px 10px;margin-top:10px;border-left:3px solid var(--border2)}
+
+/* ── NOTIF BANNER ── */
+.notif-banner{background:var(--red);color:#fff;padding:12px 16px;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:space-between;gap:10px;border-radius:0 0 12px 12px;margin:-1px 0 0}
+.close-notif{background:none;border:none;color:#fff;font-size:20px;cursor:pointer;flex-shrink:0}
+.notif-warn{background:var(--amber)}
+
 .empty{text-align:center;padding:2rem;color:var(--text2);font-size:13px}
-.alert-notif-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--red);color:#fff;padding:12px 20px;font-size:14px;font-weight:700;text-align:center;display:flex;align-items:center;justify-content:space-between}
-.close-notif{background:none;border:none;color:#fff;font-size:20px;cursor:pointer}
+.saved-ok{font-size:12px;color:var(--green);font-weight:600}
+
 @media(max-width:480px){
   .stats{grid-template-columns:repeat(2,1fr)}
   .form-grid{grid-template-columns:1fr}
   .form-grid .full{grid-column:1}
-  .date-banner{flex-direction:column;gap:6px;text-align:center}
+  .date-banner{flex-direction:column;gap:8px}
 }
 </style>
 </head>
 <body>
 
-<div id="notif-banner" class="alert-notif-banner hidden">
-  <span id="notif-text"></span>
-  <button class="close-notif" onclick="closeNotif()">✕</button>
-</div>
+<div id="notif-zone"></div>
 
 <!-- LOGIN -->
 <div id="login">
   <div class="login-logo"><div class="fallback">🐾</div></div>
   <div class="login-title">ParcPlan</div>
-  <div class="login-sub">Parc Animalier Ginasservis — Qui êtes-vous ?</div>
+  <div class="login-sub">Parc Animalier Ginasservis</div>
   <div class="user-grid" id="user-grid">
     <div class="user-card" onclick="selectUser(&#39;myriam&#39;)">
-      <div class="avatar" style="background:#FAEEDA;color:#633806">MY</div>
+      <div class="avatar" style="background:#3a2a10;color:#e8a020">MY</div>
       <div class="uname">Myriam</div>
       <div class="urole">Responsable / Admin</div>
     </div>
     <div class="user-card" onclick="selectUser(&#39;sophie&#39;)">
-      <div class="avatar" style="background:#E1F5EE;color:#085041">SO</div>
+      <div class="avatar" style="background:#0a2a1a;color:#1fba85">SO</div>
       <div class="uname">Sophie</div>
       <div class="urole">Soigneuse animaux</div>
     </div>
     <div class="user-card" onclick="selectUser(&#39;lucas&#39;)">
-      <div class="avatar" style="background:#E6F1FB;color:#0C447C">LU</div>
+      <div class="avatar" style="background:#0a1a3a;color:#4090e0">LU</div>
       <div class="uname">Lucas</div>
       <div class="urole">Agent entretien</div>
     </div>
     <div class="user-card" onclick="selectUser(&#39;emma&#39;)">
-      <div class="avatar" style="background:#EEEDFE;color:#3C3489">EM</div>
+      <div class="avatar" style="background:#2a1a3a;color:#c090ff">EM</div>
       <div class="uname">Emma</div>
       <div class="urole">Soigneuse &amp; accueil</div>
     </div>
     <div class="user-card" onclick="selectUser(&#39;kevin&#39;)">
-      <div class="avatar" style="background:#F5C4B3;color:#712B13">KÉ</div>
+      <div class="avatar" style="background:#3a1a1a;color:#ff8080">KÉ</div>
       <div class="uname">Kévin</div>
       <div class="urole">Agent polyvalent</div>
     </div>
     <div class="user-card" onclick="selectUser(&#39;lea&#39;)">
-      <div class="avatar" style="background:#C0DD97;color:#27500A">LÉ</div>
+      <div class="avatar" style="background:#1a2a0a;color:#90d040">LÉ</div>
       <div class="uname">Léa</div>
       <div class="urole">Stagiaire / Accueil</div>
     </div></div>
   <div class="pin-box hidden" id="pin-box">
     <div class="pin-who" id="pin-who"></div>
-    <div class="pin-inst">Entrez votre code PIN à 4 chiffres</div>
+    <div class="pin-inst">Code PIN à 4 chiffres</div>
     <div class="pin-dots" id="pin-dots"></div>
     <div class="pin-pad" id="pin-pad"><button class="pkey" onclick="pinPress(&#39;1&#39;)">1</button><button class="pkey" onclick="pinPress(&#39;2&#39;)">2</button><button class="pkey" onclick="pinPress(&#39;3&#39;)">3</button><button class="pkey" onclick="pinPress(&#39;4&#39;)">4</button><button class="pkey" onclick="pinPress(&#39;5&#39;)">5</button><button class="pkey" onclick="pinPress(&#39;6&#39;)">6</button><button class="pkey" onclick="pinPress(&#39;7&#39;)">7</button><button class="pkey" onclick="pinPress(&#39;8&#39;)">8</button><button class="pkey" onclick="pinPress(&#39;9&#39;)">9</button><button class="pkey" onclick="pinPress(&#39;&#39;)"></button><button class="pkey" onclick="pinPress(&#39;0&#39;)">0</button><button class="pkey" onclick="pinPress(&#39;⌫&#39;)">⌫</button></div>
     <div class="pin-err" id="pin-err"></div>
-    <button class="back-btn" onclick="cancelPin()">← Choisir un autre utilisateur</button>
+    <button class="back-btn" onclick="cancelPin()">← Retour</button>
   </div>
 </div>
 
@@ -262,9 +266,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <div class="avatar" id="tb-avatar"></div>
       <div><div class="top-name" id="tb-name"></div><div class="top-role" id="tb-role"></div></div>
     </div>
-    <div class="topbar-right">
-      <button class="logout" onclick="logout()">⏻ Quitter</button>
-    </div>
+    <button class="logout" onclick="logout()">⏻ Quitter</button>
   </div>
   <div class="tabs" id="tabs"></div>
   <div class="content">
@@ -275,85 +277,119 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 </div>
 
 <script>
-// ══ STATE ════════════════════════════════════════════════════════════════════
-let USERS = [
-  {id:'myriam',name:'Myriam',prenom:'Myriam',role:'Responsable / Admin',pin:'0000',col:'#FAEEDA',tc:'#633806',admin:true,tel:'',mail:'asinella@outlook.fr'},
-  {id:'sophie',name:'Sophie',prenom:'Sophie',role:'Soigneuse animaux',pin:'1111',col:'#E1F5EE',tc:'#085041',admin:false,tel:'06 XX XX XX XX',mail:''},
-  {id:'lucas',name:'Lucas',prenom:'Lucas',role:'Agent entretien',pin:'2222',col:'#E6F1FB',tc:'#0C447C',admin:false,tel:'06 XX XX XX XX',mail:''},
-  {id:'emma',name:'Emma',prenom:'Emma',role:'Soigneuse & accueil',pin:'3333',col:'#EEEDFE',tc:'#3C3489',admin:false,tel:'06 XX XX XX XX',mail:''},
-  {id:'kevin',name:'Kévin',prenom:'Kévin',role:'Agent polyvalent',pin:'4444',col:'#F5C4B3',tc:'#712B13',admin:false,tel:'06 XX XX XX XX',mail:''},
-  {id:'lea',name:'Léa',prenom:'Léa',role:'Stagiaire / Accueil',pin:'5555',col:'#C0DD97',tc:'#27500A',admin:false,tel:'06 XX XX XX XX',mail:''},
+// ══ DATA ═════════════════════════════════════════════════════════════════════
+let USERS=[
+  {id:'myriam',name:'Myriam',prenom:'Myriam',role:'Responsable / Admin',pin:'0000',col:'#3a2a10',tc:'#e8a020',admin:true,tel:'',mail:'asinella@outlook.fr'},
+  {id:'sophie',name:'Sophie',prenom:'Sophie',role:'Soigneuse animaux',pin:'1111',col:'#0a2a1a',tc:'#1fba85',admin:false,tel:'',mail:''},
+  {id:'lucas',name:'Lucas',prenom:'Lucas',role:'Agent entretien',pin:'2222',col:'#0a1a3a',tc:'#4090e0',admin:false,tel:'',mail:''},
+  {id:'emma',name:'Emma',prenom:'Emma',role:'Soigneuse & accueil',pin:'3333',col:'#2a1a3a',tc:'#c090ff',admin:false,tel:'',mail:''},
+  {id:'kevin',name:'Kévin',prenom:'Kévin',role:'Agent polyvalent',pin:'4444',col:'#3a1a1a',tc:'#ff8080',admin:false,tel:'',mail:''},
+  {id:'lea',name:'Léa',prenom:'Léa',role:'Stagiaire / Accueil',pin:'5555',col:'#1a2a0a',tc:'#90d040',admin:false,tel:'',mail:''},
 ];
 
-let TASKS = [
-  {id:1,name:'Nourrissage perroquets & oiseaux',who:'sophie',slot:'matin',plageMin:'08:00',plageMax:'09:00',animal:'🦜',days:[1,2,3,4,5,6,0],done:false,doneAt:null},
-  {id:2,name:'Nourrissage chèvres & ânes',who:'lucas',slot:'matin',plageMin:'08:30',plageMax:'09:30',animal:'🐐',days:[1,2,3,4,5,6,0],done:false,doneAt:null},
-  {id:3,name:'Nettoyage enclos chameaux',who:'sophie',slot:'matin',plageMin:'09:00',plageMax:'10:00',animal:'🐪',days:[1,2,3,4,5,6,0],done:false,doneAt:null},
-  {id:4,name:'Contrôle eau & abreuvoirs',who:'lucas',slot:'matin',plageMin:'09:30',plageMax:'10:30',animal:'💧',days:[1,2,3,4,5,6,0],done:false,doneAt:null},
-  {id:5,name:'Visite sanitaire rapide',who:'myriam',slot:'matin',plageMin:'10:00',plageMax:'11:00',animal:'🩺',days:[1,2,3,4,5],done:false,doneAt:null},
-  {id:6,name:'Accueil visiteurs & billetterie',who:'lea',slot:'matin',plageMin:'10:00',plageMax:'10:30',animal:'🎟️',days:[1,2,3,4,5,6,0],done:false,doneAt:null},
-  {id:7,name:'Nourrissage reptiles',who:'sophie',slot:'midi',plageMin:'12:00',plageMax:'13:00',animal:'🦎',days:[1,2,3,4,5,6,0],done:false,doneAt:null},
-  {id:8,name:'Alimentation cheval & poney',who:'kevin',slot:'midi',plageMin:'12:30',plageMax:'13:30',animal:'🐴',days:[1,2,3,4,5,6,0],done:false,doneAt:null},
-  {id:9,name:'Nettoyage allées visiteurs',who:'kevin',slot:'continu',plageMin:'08:00',plageMax:'18:00',animal:'🧹',days:[1,2,3,4,5,6,0],done:false,doneAt:null},
-  {id:10,name:'Nourrissage soir — tous animaux',who:'sophie',slot:'soir',plageMin:'17:30',plageMax:'18:30',animal:'🍃',days:[1,2,3,4,5,6,0],done:false,doneAt:null},
-  {id:11,name:'Fermeture & sécurité enclos',who:'lucas',slot:'soir',plageMin:'18:30',plageMax:'19:30',animal:'🔒',days:[1,2,3,4,5,6,0],done:false,doneAt:null},
-  {id:12,name:'Rapport journalier admin',who:'myriam',slot:'soir',plageMin:'17:30',plageMax:'19:00',animal:'📋',days:[1,2,3,4,5],done:false,doneAt:null},
+// Chaque tâche a : days=[{dow,plageMin,plageMax}] — un horaire PAR jour
+let TASKS=[
+  {id:1,name:'Nourrissage perroquets & oiseaux',who:'sophie',slot:'matin',animal:'🦜',
+   days:[{dow:1,pMin:'08:00',pMax:'09:00'},{dow:2,pMin:'08:00',pMax:'09:00'},{dow:3,pMin:'08:00',pMax:'09:00'},{dow:4,pMin:'08:00',pMax:'09:00'},{dow:5,pMin:'08:00',pMax:'09:00'},{dow:6,pMin:'08:30',pMax:'09:30'},{dow:0,pMin:'08:30',pMax:'09:30'}],
+   done:false,doneAt:null,todayOverride:null},
+  {id:2,name:'Nourrissage chèvres & ânes',who:'lucas',slot:'matin',animal:'🐐',
+   days:[{dow:1,pMin:'08:30',pMax:'09:30'},{dow:2,pMin:'08:30',pMax:'09:30'},{dow:3,pMin:'09:00',pMax:'10:00'},{dow:4,pMin:'08:30',pMax:'09:30'},{dow:5,pMin:'08:30',pMax:'09:30'},{dow:6,pMin:'09:00',pMax:'10:00'},{dow:0,pMin:'09:00',pMax:'10:00'}],
+   done:false,doneAt:null,todayOverride:null},
+  {id:3,name:'Nettoyage enclos chameaux',who:'sophie',slot:'matin',animal:'🐪',
+   days:[{dow:1,pMin:'09:00',pMax:'10:00'},{dow:2,pMin:'09:00',pMax:'10:00'},{dow:3,pMin:'10:00',pMax:'11:00'},{dow:4,pMin:'09:00',pMax:'10:00'},{dow:5,pMin:'09:00',pMax:'10:00'},{dow:6,pMin:'10:00',pMax:'11:00'},{dow:0,pMin:'10:00',pMax:'11:00'}],
+   done:false,doneAt:null,todayOverride:null},
+  {id:4,name:'Contrôle eau & abreuvoirs',who:'lucas',slot:'matin',animal:'💧',
+   days:[{dow:1,pMin:'09:30',pMax:'10:30'},{dow:2,pMin:'09:30',pMax:'10:30'},{dow:3,pMin:'09:30',pMax:'10:30'},{dow:4,pMin:'09:30',pMax:'10:30'},{dow:5,pMin:'09:30',pMax:'10:30'},{dow:6,pMin:'10:00',pMax:'11:00'},{dow:0,pMin:'10:00',pMax:'11:00'}],
+   done:false,doneAt:null,todayOverride:null},
+  {id:5,name:'Visite sanitaire',who:'myriam',slot:'matin',animal:'🩺',
+   days:[{dow:1,pMin:'10:00',pMax:'11:00'},{dow:2,pMin:'10:00',pMax:'11:00'},{dow:3,pMin:'10:00',pMax:'11:00'},{dow:4,pMin:'10:00',pMax:'11:00'},{dow:5,pMin:'10:00',pMax:'11:00'}],
+   done:false,doneAt:null,todayOverride:null},
+  {id:6,name:'Accueil visiteurs & billetterie',who:'lea',slot:'matin',animal:'🎟️',
+   days:[{dow:1,pMin:'10:00',pMax:'10:30'},{dow:2,pMin:'10:00',pMax:'10:30'},{dow:3,pMin:'10:00',pMax:'10:30'},{dow:4,pMin:'10:00',pMax:'10:30'},{dow:5,pMin:'10:00',pMax:'10:30'},{dow:6,pMin:'09:30',pMax:'10:30'},{dow:0,pMin:'09:30',pMax:'10:30'}],
+   done:false,doneAt:null,todayOverride:null},
+  {id:7,name:'Nourrissage reptiles',who:'sophie',slot:'midi',animal:'🦎',
+   days:[{dow:1,pMin:'12:00',pMax:'13:00'},{dow:2,pMin:'12:00',pMax:'13:00'},{dow:3,pMin:'12:00',pMax:'13:00'},{dow:4,pMin:'12:00',pMax:'13:00'},{dow:5,pMin:'12:00',pMax:'13:00'},{dow:6,pMin:'12:00',pMax:'13:00'},{dow:0,pMin:'12:00',pMax:'13:00'}],
+   done:false,doneAt:null,todayOverride:null},
+  {id:8,name:'Alimentation cheval & poney',who:'kevin',slot:'midi',animal:'🐴',
+   days:[{dow:1,pMin:'12:30',pMax:'13:30'},{dow:2,pMin:'12:30',pMax:'13:30'},{dow:3,pMin:'13:00',pMax:'14:00'},{dow:4,pMin:'12:30',pMax:'13:30'},{dow:5,pMin:'12:30',pMax:'13:30'},{dow:6,pMin:'12:30',pMax:'13:30'},{dow:0,pMin:'12:30',pMax:'13:30'}],
+   done:false,doneAt:null,todayOverride:null},
+  {id:9,name:'Nettoyage allées',who:'kevin',slot:'continu',animal:'🧹',
+   days:[{dow:1,pMin:'08:00',pMax:'18:00'},{dow:2,pMin:'08:00',pMax:'18:00'},{dow:3,pMin:'08:00',pMax:'18:00'},{dow:4,pMin:'08:00',pMax:'18:00'},{dow:5,pMin:'08:00',pMax:'18:00'},{dow:6,pMin:'08:00',pMax:'18:00'},{dow:0,pMin:'08:00',pMax:'18:00'}],
+   done:false,doneAt:null,todayOverride:null},
+  {id:10,name:'Nourrissage soir — tous animaux',who:'sophie',slot:'soir',animal:'🍃',
+   days:[{dow:1,pMin:'17:30',pMax:'18:30'},{dow:2,pMin:'17:30',pMax:'18:30'},{dow:3,pMin:'17:30',pMax:'18:30'},{dow:4,pMin:'17:30',pMax:'18:30'},{dow:5,pMin:'17:30',pMax:'18:30'},{dow:6,pMin:'17:30',pMax:'18:30'},{dow:0,pMin:'17:30',pMax:'18:30'}],
+   done:false,doneAt:null,todayOverride:null},
+  {id:11,name:'Fermeture & sécurité enclos',who:'lucas',slot:'soir',animal:'🔒',
+   days:[{dow:1,pMin:'18:30',pMax:'19:30'},{dow:2,pMin:'18:30',pMax:'19:30'},{dow:3,pMin:'18:30',pMax:'19:30'},{dow:4,pMin:'18:30',pMax:'19:30'},{dow:5,pMin:'18:30',pMax:'19:30'},{dow:6,pMin:'18:30',pMax:'19:30'},{dow:0,pMin:'18:30',pMax:'19:30'}],
+   done:false,doneAt:null,todayOverride:null},
 ];
 
-let OBS = {};
-let ALERT_SETTINGS = {tel:'',mail:'',alertDelay:0,obsHeure:'17:00',smsOn:false,mailOn:false};
-let STATE = {user:null,pin:'',pinTarget:null,filter:'all',tab:'jour'};
-let nextId = 20;
-const DAYS_FR = ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
-const DAYS_FULL = ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
+let OBS={};
+let ALERTS={tel:'',mail:'',delay:0,obsH:'17:00',smsOn:false,mailOn:false};
+let STATE={user:null,pin:'',pinTarget:null,filter:'all',tab:'jour',modTask:null};
+let nextId=30;
+let newDays=[1,2,3,4,5,6,0];
+const DAYS_FR=['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
+const DAYS_FULL=['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
-const nm = () => { const n=new Date(); return n.getHours()*60+n.getMinutes(); };
-const toMin = s => { if(!s) return 99999; const[h,m]=s.split(':').map(Number); return h*60+m; };
-const isLate = t => !t.done && nm() > toMin(t.plageMax);
-const todayKey = () => new Date().toISOString().slice(0,10);
-const initials = n => n.slice(0,2).toUpperCase();
-const slotLabel = s => s==='matin'?'Matin':s==='midi'?'Midi':s==='soir'?'Soir':'Continu';
-const slotBadge = s => s==='matin'?'bm':s==='midi'?'bmi':s==='soir'?'bs':'bc';
-const getUser = id => USERS.find(u=>u.id===id);
-const $ = id => document.getElementById(id);
-const todayDow = () => new Date().getDay();
-const isTaskToday = t => t.days && t.days.includes(todayDow());
+const $=id=>document.getElementById(id);
+const nm=()=>{const n=new Date();return n.getHours()*60+n.getMinutes();};
+const toMin=s=>s?Number(s.split(':')[0])*60+Number(s.split(':')[1]):99999;
+const todayDow=()=>new Date().getDay();
+const todayKey=()=>new Date().toISOString().slice(0,10);
+const initials=n=>n.slice(0,2).toUpperCase();
+const getUser=id=>USERS.find(u=>u.id===id);
+const slotLabel=s=>s==='matin'?'Matin':s==='midi'?'Midi':s==='soir'?'Soir':'Continu';
+const slotBadge=s=>s==='matin'?'bm':s==='midi'?'bmi':s==='soir'?'bs':'bc';
 
+function getTodaySlot(t){
+  if(t.todayOverride) return t.todayOverride;
+  return t.days.find(d=>d.dow===todayDow())||null;
+}
+function isTaskToday(t){ return !!getTodaySlot(t); }
+function isLate(t){
+  if(t.done) return false;
+  const s=getTodaySlot(t); if(!s) return false;
+  return nm()>toMin(s.pMax);
+}
+function daysLabel(t){
+  const dows=t.days.map(d=>d.dow);
+  if(dows.length===7) return 'Tous les jours';
+  return [1,2,3,4,5,6,0].filter(d=>dows.includes(d)).map(d=>DAYS_FR[d]).join(', ');
+}
 function formatDate(){
   const d=new Date();
-  const opts={weekday:'long',day:'numeric',month:'long',year:'numeric'};
-  return d.toLocaleDateString('fr-FR',opts);
+  return d.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
 }
 function formatTime(){
-  const d=new Date();
-  return d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+  return new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
 }
-function daysLabel(days){
-  if(!days||days.length===7) return 'Tous les jours';
-  if(days.length===0) return 'Aucun jour';
-  const sorted=[1,2,3,4,5,6,0].filter(d=>days.includes(d));
-  return sorted.map(d=>DAYS_FR[d]).join(', ');
+function getWeekNum(d){
+  const dt=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()));
+  dt.setUTCDate(dt.getUTCDate()+4-(dt.getUTCDay()||7));
+  const y=new Date(Date.UTC(dt.getUTCFullYear(),0,1));
+  return Math.ceil((((dt-y)/86400000)+1)/7);
 }
 
-// ── Notifications visuelles ──────────────────────────────────────────────────
-function showNotif(msg){
-  $('notif-text').textContent=msg;
-  $('notif-banner').classList.remove('hidden');
-  setTimeout(closeNotif, 6000);
+// ── Notifs visuelles ─────────────────────────────────────────────────────────
+function showNotif(msg, type='danger'){
+  const z=$('notif-zone');
+  const div=document.createElement('div');
+  div.className='notif-banner'+(type==='warn'?' notif-warn':'');
+  div.innerHTML=`<span>${msg}</span><button class="close-notif" onclick="this.parentNode.remove()">✕</button>`;
+  z.appendChild(div);
+  setTimeout(()=>div.remove(), 7000);
 }
-function closeNotif(){ $('notif-banner').classList.add('hidden'); }
 
 function checkAlerts(){
   if(!STATE.user) return;
-  const myTasks = STATE.user.admin ? TASKS : TASKS.filter(t=>t.who===STATE.user.id);
-  const todayTasks = myTasks.filter(t=>isTaskToday(t));
-  const late = todayTasks.filter(t=>isLate(t));
+  const myT=STATE.user.admin?TASKS:TASKS.filter(t=>t.who===STATE.user.id);
+  const late=myT.filter(t=>isTaskToday(t)&&isLate(t));
   if(late.length>0) showNotif('⚠️ '+late.length+' tâche'+(late.length>1?'s':'')+' en retard : '+late.map(t=>t.name).join(', '));
-  const obsKey=todayKey()+STATE.user.id;
   const h=new Date().getHours();
-  const obsH=parseInt((ALERT_SETTINGS.obsHeure||'17:00').split(':')[0]);
-  if(h>=obsH && !OBS[obsKey]) showNotif('📝 Rappel : observation de fin de journée non remplie !');
+  if(h>=parseInt(ALERTS.obsH)&&!OBS[todayKey()+STATE.user.id])
+    showNotif('📝 Observation de fin de journée non remplie !','warn');
 }
 
 // ── LOGIN ────────────────────────────────────────────────────────────────────
@@ -366,60 +402,53 @@ function buildLogin(){
     </div>`).join('');
   $('pin-pad').innerHTML=[1,2,3,4,5,6,7,8,9,'',0,'⌫'].map(k=>`<button class="pkey" onclick="pinPress('${k}')">${k}</button>`).join('');
 }
-
-function renderDots(){ $('pin-dots').innerHTML=[0,1,2,3].map(i=>`<div class="dot${i<STATE.pin.length?' on':''}"></div>`).join(''); }
-
+function renderDots(){$('pin-dots').innerHTML=[0,1,2,3].map(i=>`<div class="dot${i<STATE.pin.length?' on':''}"></div>`).join('');}
 function selectUser(id){
-  STATE.pinTarget=USERS.find(u=>u.id===id); STATE.pin='';
+  STATE.pinTarget=USERS.find(u=>u.id===id);STATE.pin='';
   $('pin-who').textContent='Bonjour '+STATE.pinTarget.prenom+' !';
-  $('user-grid').classList.add('hidden'); $('pin-box').classList.remove('hidden');
-  $('pin-err').textContent=''; renderDots();
+  $('user-grid').classList.add('hidden');$('pin-box').classList.remove('hidden');
+  $('pin-err').textContent='';renderDots();
 }
-
 function cancelPin(){
-  STATE.pinTarget=null; STATE.pin='';
-  $('pin-box').classList.add('hidden'); $('user-grid').classList.remove('hidden');
+  STATE.pinTarget=null;STATE.pin='';
+  $('pin-box').classList.add('hidden');$('user-grid').classList.remove('hidden');
 }
-
 function pinPress(v){
   if(v==='') return;
-  if(v==='⌫'){ STATE.pin=STATE.pin.slice(0,-1); renderDots(); return; }
+  if(v==='⌫'){STATE.pin=STATE.pin.slice(0,-1);renderDots();return;}
   if(STATE.pin.length>=4) return;
-  STATE.pin+=String(v); renderDots();
+  STATE.pin+=String(v);renderDots();
   if(STATE.pin.length===4){
     setTimeout(()=>{
-      if(STATE.pin===STATE.pinTarget.pin){ doLogin(STATE.pinTarget); }
-      else { $('pin-err').textContent='Code incorrect — réessayez'; STATE.pin=''; renderDots(); }
+      if(STATE.pin===STATE.pinTarget.pin) doLogin(STATE.pinTarget);
+      else{$('pin-err').textContent='Code incorrect';STATE.pin='';renderDots();}
     },250);
   }
 }
-
 function doLogin(u){
   STATE.user=u;
-  $('login').classList.add('hidden'); $('app').classList.remove('hidden');
+  $('login').classList.add('hidden');$('app').classList.remove('hidden');
   $('tb-avatar').textContent=initials(u.name);
   $('tb-avatar').style.cssText=`background:${u.col};color:${u.tc};width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700`;
-  $('tb-name').textContent=u.name; $('tb-role').textContent=u.role;
-  buildTabs(); showTab('jour');
-  setTimeout(checkAlerts, 2000);
+  $('tb-name').textContent=u.name;$('tb-role').textContent=u.role;
+  buildTabs();showTab('jour');
+  setTimeout(checkAlerts,2000);
 }
-
 function logout(){
-  STATE.user=null; STATE.pin=''; STATE.pinTarget=null; STATE.filter='all'; STATE.tab='jour';
-  $('app').classList.add('hidden'); $('login').classList.remove('hidden');
-  $('pin-box').classList.add('hidden'); $('user-grid').classList.remove('hidden');
-  $('notif-banner').classList.add('hidden');
+  STATE.user=null;STATE.pin='';STATE.pinTarget=null;STATE.filter='all';STATE.tab='jour';STATE.modTask=null;
+  $('app').classList.add('hidden');$('login').classList.remove('hidden');
+  $('pin-box').classList.add('hidden');$('user-grid').classList.remove('hidden');
+  $('notif-zone').innerHTML='';
 }
 
 // ── TABS ─────────────────────────────────────────────────────────────────────
 function buildTabs(){
   const tabs=[{id:'jour',label:'📅 Planning du jour'},{id:'semaine',label:'📊 Vue semaine'}];
   if(STATE.user.admin) tabs.push({id:'admin',label:'⚙️ Administration'});
-  $('tabs').innerHTML=tabs.map(t=>`<div class="tab${STATE.tab===t.id?' on':''}" onclick="showTab('${t.id}')">${t.label}</div>`).join('');
+  $('tabs').innerHTML=tabs.map(t=>`<button class="tab${STATE.tab===t.id?' on':''}" onclick="showTab('${t.id}')">${t.label}</button>`).join('');
 }
-
 function showTab(id){
-  STATE.tab=id; buildTabs();
+  STATE.tab=id;STATE.modTask=null;buildTabs();
   ['jour','semaine','admin'].forEach(v=>$('view-'+v).classList.add('hidden'));
   $('view-'+id).classList.remove('hidden');
   if(id==='jour') renderJour();
@@ -429,157 +458,162 @@ function showTab(id){
 
 // ── JOUR ─────────────────────────────────────────────────────────────────────
 function renderJour(){
-  const u=STATE.user; const isAdmin=u.admin;
-  let myTasks=isAdmin?TASKS:TASKS.filter(t=>t.who===u.id);
-  let todayTasks=myTasks.filter(t=>isTaskToday(t));
-  let visible=[...todayTasks];
+  const u=STATE.user;
+  let myT=u.admin?TASKS:TASKS.filter(t=>t.who===u.id);
+  let todayT=myT.filter(t=>isTaskToday(t));
+  let visible=[...todayT];
   if(STATE.filter==='late') visible=visible.filter(t=>isLate(t));
   else if(STATE.filter!=='all') visible=visible.filter(t=>t.slot===STATE.filter);
-  const done=todayTasks.filter(t=>t.done).length;
-  const late=todayTasks.filter(t=>isLate(t)).length;
-  const att=todayTasks.filter(t=>!t.done&&!isLate(t)).length;
-  const pct=todayTasks.length?Math.round(done/todayTasks.length*100):0;
-  const obsKey=todayKey()+u.id; const savedObs=OBS[obsKey]||'';
-  const nowDate=new Date();
-  const dateCapitalized=formatDate().charAt(0).toUpperCase()+formatDate().slice(1);
+
+  const done=todayT.filter(t=>t.done).length;
+  const late=todayT.filter(t=>isLate(t)).length;
+  const att=todayT.filter(t=>!t.done&&!isLate(t)).length;
+  const pct=todayT.length?Math.round(done/todayT.length*100):0;
+  const obsKey=todayKey()+u.id;
+  const savedObs=OBS[obsKey]||'';
+  const dateStr=formatDate();
+  const dateCap=dateStr.charAt(0).toUpperCase()+dateStr.slice(1);
 
   let h=`<div class="date-banner">
-    <div class="date-banner-left">
-      <div class="date-big">${dateCapitalized}</div>
-      <div class="date-small">${DAYS_FULL[todayDow()]} — Semaine ${getWeekNumber(nowDate)}</div>
+    <div>
+      <div class="date-big">${dateCap}</div>
+      <div class="date-small">Semaine ${getWeekNum(new Date())} · ${DAYS_FULL[todayDow()]}</div>
     </div>
-    <div class="date-banner-right">
+    <div style="text-align:right">
       <div class="time-now" id="live-time">${formatTime()}</div>
       <div class="time-label">heure actuelle</div>
     </div>
   </div>`;
 
-  if(late>0) h+=`<div class="alert danger"><span class="alert-icon">🔴</span><span><strong>${late} tâche${late>1?'s':''} en retard</strong> — heure limite dépassée, à effectuer immédiatement</span></div>`;
-  if(!savedObs && new Date().getHours()>=parseInt((ALERT_SETTINGS.obsHeure||'17:00'))) h+=`<div class="alert warn"><span class="alert-icon">📝</span><span>Observation de fin de journée <strong>obligatoire</strong> — merci de la remplir avant de partir</span></div>`;
-  if(att>0 && late===0 && done>0) h+=`<div class="alert info"><span class="alert-icon">⏰</span><span>${att} tâche${att>1?'s':''} encore à effectuer aujourd'hui</span></div>`;
-  if(done===todayTasks.length && todayTasks.length>0 && savedObs) h+=`<div class="alert ok"><span class="alert-icon">✅</span><span>Journée complète ! Tout est fait et l'observation est enregistrée.</span></div>`;
+  if(late>0) h+=`<div class="alert danger">🔴 <strong>${late} tâche${late>1?'s':''} en retard</strong> — à effectuer immédiatement</div>`;
+  if(!savedObs&&new Date().getHours()>=parseInt(ALERTS.obsH)) h+=`<div class="alert warn">📝 Observation de fin de journée <strong>obligatoire</strong> — non remplie</div>`;
+  if(att>0&&late===0&&done>0) h+=`<div class="alert info">⏰ ${att} tâche${att>1?'s':''} restante${att>1?'s':''} aujourd'hui</div>`;
+  if(done===todayT.length&&todayT.length>0&&savedObs) h+=`<div class="alert ok">✅ Journée complète ! Bravo.</div>`;
 
   h+=`<div class="stats">
-    <div class="stat"><div class="stat-n cg">${done}</div><div class="stat-l">Effectuées</div></div>
+    <div class="stat"><div class="stat-n cg">${done}</div><div class="stat-l">Faites</div></div>
     <div class="stat"><div class="stat-n ca">${att}</div><div class="stat-l">En attente</div></div>
     <div class="stat"><div class="stat-n cr">${late}</div><div class="stat-l">En retard</div></div>
-    <div class="stat"><div class="stat-n cb">${todayTasks.length}</div><div class="stat-l">Aujourd'hui</div></div>
+    <div class="stat"><div class="stat-n cb">${todayT.length}</div><div class="stat-l">Aujourd'hui</div></div>
   </div>
-  <div class="progbar"><div class="progfill" style="width:${pct}%"></div></div>`;
+  <div class="progbar"><div class="progfill" style="width:${pct}%"></div></div>
+  <div class="filters">${['all','matin','midi','soir','continu','late'].map(f=>`<button class="fbtn${STATE.filter===f?' on':''}" onclick="setFilter('${f}')">${f==='all'?'Toutes':f==='late'?'⚠ Retard':f.charAt(0).toUpperCase()+f.slice(1)}</button>`).join('')}</div>`;
 
-  h+=`<div class="filters">${['all','matin','midi','soir','continu','late'].map(f=>`<button class="fbtn${STATE.filter===f?' on':''}" onclick="setFilter('${f}')">${f==='all'?'Toutes':f==='late'?'⚠ Retard':f.charAt(0).toUpperCase()+f.slice(1)}</button>`).join('')}</div>`;
-
-  if(visible.length===0){ h+=`<div class="empty">Aucune tâche pour ce filtre aujourd'hui</div>`; }
-  else {
+  if(visible.length===0){h+=`<div class="empty">Aucune tâche pour ce filtre aujourd'hui</div>`;}
+  else{
     h+=visible.map(t=>{
-      const l=isLate(t); const who=getUser(t.who);
-      return `<div class="task${t.done?' done':l?' late':''}">
+      const l=isLate(t);const who=getUser(t.who);
+      const slot=getTodaySlot(t);
+      const isModOpen=STATE.modTask===t.id;
+      let taskH=`<div class="task${t.done?' done':l?' late':''}" id="task-${t.id}">
         <button class="ck${t.done?' done':l?' late':''}" onclick="toggleTask(${t.id})">${t.done?'✓':l?'!':''}</button>
         <div class="task-body">
           <div class="task-top">
             <span style="font-size:18px">${t.animal}</span>
             <span class="task-name${t.done?' done':''}">${t.name}</span>
             <span class="badge ${slotBadge(t.slot)}">${slotLabel(t.slot)}</span>
-            ${l&&!t.done?'<span class="badge blate">⚠ En retard</span>':''}
+            ${l&&!t.done?'<span class="badge blate">⚠ Retard</span>':''}
           </div>
           <div class="task-meta">👤 ${who?who.prenom:'?'}</div>
-          <div class="task-plage">🕐 Plage horaire : ${t.plageMin} → ${t.plageMax}</div>
-          <div class="task-days">📅 ${daysLabel(t.days)}</div>
+          <div class="task-meta">🕐 Plage : <strong style="color:${l?'#ff8080':'var(--green)'}">${slot?slot.pMin+' → '+slot.pMax:'—'}</strong></div>
           ${t.doneAt?`<div class="task-stamp">✅ Effectuée à ${t.doneAt}</div>`:''}
-        </div>
-      </div>`;
+          <div class="task-actions">
+            ${!t.done?`<button class="mod-btn" onclick="openMod(${t.id})">✏️ Modifier horaire du jour</button>`:''}
+          </div>`;
+      if(isModOpen&&!t.done){
+        taskH+=`<div class="mod-form">
+          <div><label style="font-size:11px;color:var(--text2);font-weight:600">Heure début</label><input class="mfinput" id="mod-min-${t.id}" type="time" value="${slot?slot.pMin:'08:00'}"></div>
+          <div><label style="font-size:11px;color:var(--text2);font-weight:600">Heure fin</label><input class="mfinput" id="mod-max-${t.id}" type="time" value="${slot?slot.pMax:'09:00'}"></div>
+          <div class="full" style="display:flex;gap:8px;margin-top:4px">
+            <button class="mf-save" onclick="saveMod(${t.id})">✅ Valider</button>
+            <button class="mf-cancel" onclick="closeMod()">Annuler</button>
+          </div>
+        </div>`;
+      }
+      taskH+=`</div></div>`;
+      return taskH;
     }).join('');
   }
 
   h+=`<div class="obs-card${savedObs?' saved':''}">
     <div class="obs-title">📝 Observation de fin de journée <span class="obs-req${savedObs?' ok':''}">${savedObs?'✓ Enregistrée':'Obligatoire'}</span></div>
     <div class="obs-sub">Animaux, incidents, besoins particuliers, remarques pour demain...</div>
-    <textarea class="obs-ta" id="obs-ta" placeholder="Ex : Le cheval Balthazar boite légèrement côté avant gauche, à surveiller. Abreuvoir enclos 3 à vérifier...">${savedObs}</textarea>
-    <div style="display:flex;align-items:center;gap:10px;margin-top:8px">
+    <textarea class="obs-ta" id="obs-ta" placeholder="Ex : Balthazar boite côté avant gauche, à surveiller. Abreuvoir enclos 3 à vérifier...">${savedObs}</textarea>
+    <div style="display:flex;align-items:center;gap:10px;margin-top:8px;flex-wrap:wrap">
       <button class="obs-save" onclick="saveObs()">💾 Enregistrer</button>
-      ${savedObs?'<span style="font-size:12px;color:var(--green);font-weight:600">✓ Sauvegardée</span>':''}
+      ${savedObs?'<span class="saved-ok">✓ Sauvegardée</span>':''}
     </div>
   </div>`;
 
   $('view-jour').innerHTML=h;
-  updateClock();
 }
 
-function updateClock(){
-  const el=$('live-time');
-  if(el) el.textContent=formatTime();
+function openMod(id){STATE.modTask=id;renderJour();}
+function closeMod(){STATE.modTask=null;renderJour();}
+function saveMod(id){
+  const t=TASKS.find(x=>x.id===id);if(!t) return;
+  const pMin=($('mod-min-'+id)||{value:null}).value;
+  const pMax=($('mod-max-'+id)||{value:null}).value;
+  if(!pMin||!pMax){alert('Remplis les deux horaires.');return;}
+  t.todayOverride={dow:todayDow(),pMin,pMax};
+  STATE.modTask=null;renderJour();
+  showNotif('✅ Horaire modifié pour aujourd\'hui : '+pMin+' → '+pMax,'warn');
 }
-
-function getWeekNumber(d){
-  const date=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()));
-  date.setUTCDate(date.getUTCDate()+4-(date.getUTCDay()||7));
-  const yearStart=new Date(Date.UTC(date.getUTCFullYear(),0,1));
-  return Math.ceil((((date-yearStart)/86400000)+1)/7);
-}
-
 function toggleTask(id){
-  const t=TASKS.find(x=>x.id===id); if(!t) return;
-  t.done=!t.done;
-  t.doneAt=t.done?new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}):null;
-  renderJour();
+  const t=TASKS.find(x=>x.id===id);if(!t) return;
+  t.done=!t.done;t.doneAt=t.done?new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}):null;
+  STATE.modTask=null;renderJour();
 }
-function setFilter(f){ STATE.filter=f; renderJour(); }
+function setFilter(f){STATE.filter=f;renderJour();}
 function saveObs(){
-  const ta=$('obs-ta'); if(!ta) return;
-  const v=ta.value.trim();
-  if(!v){ alert('Merci de saisir une observation avant d\'enregistrer.'); return; }
-  OBS[todayKey()+STATE.user.id]=v;
-  renderJour();
+  const ta=$('obs-ta');if(!ta) return;
+  const v=ta.value.trim();if(!v){alert('Saisis une observation avant d\'enregistrer.');return;}
+  OBS[todayKey()+STATE.user.id]=v;renderJour();
 }
 
 // ── SEMAINE ──────────────────────────────────────────────────────────────────
 function renderSemaine(){
-  const days=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
-  const today=new Date(); const dow=today.getDay();
+  const today=new Date();const dow=today.getDay();
   const mondayOff=dow===0?-6:1-dow;
   const myT=STATE.user.admin?TASKS:TASKS.filter(t=>t.who===STATE.user.id);
-  let h=`<div style="font-size:13px;color:var(--text2);margin-bottom:12px">Planning semaine — ${myT.length} tâche${myT.length>1?'s':''} au total</div>`;
+  let h=`<div style="font-size:13px;color:var(--text2);margin-bottom:12px">Planning semaine — ${myT.length} tâche${myT.length>1?'s':''}</div>`;
   h+=`<div class="week-wrap"><div class="week-grid">`;
   for(let i=0;i<7;i++){
-    const d=new Date(today); d.setDate(today.getDate()+mondayOff+i);
+    const d=new Date(today);d.setDate(today.getDate()+mondayOff+i);
     const isToday=d.toDateString()===today.toDateString();
     const isPast=d<new Date(today.toDateString());
     const dow2=[1,2,3,4,5,6,0][i];
-    const dayTasks=myT.filter(t=>t.days&&t.days.includes(dow2));
+    const dayT=myT.filter(t=>t.days.some(x=>x.dow===dow2));
     h+=`<div class="day-col"><div class="day-hd${isToday?' today':''}">
-      <div class="day-dn">${days[i]}</div><div class="day-dt">${d.getDate()}</div>
+      <div class="day-dn">${['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'][i]}</div>
+      <div class="day-dt">${d.getDate()}</div>
     </div>`;
-    if(isToday){
-      dayTasks.slice(0,5).forEach(t=>{ const l=isLate(t); h+=`<div class="day-task ${t.done?'dt-ok':l?'dt-late':'dt-pend'}" title="${t.name}">${t.animal} ${t.name}</div>`; });
-      if(dayTasks.length>5) h+=`<div style="font-size:9px;color:var(--text2);padding:2px 5px">+${dayTasks.length-5}</div>`;
-    } else {
-      dayTasks.slice(0,4).forEach(t=>{ h+=`<div class="day-task ${isPast?'dt-late':'dt-pend'}" title="${t.name} (${t.plageMin}→${t.plageMax})">${t.animal} ${t.name}</div>`; });
-      if(dayTasks.length>4) h+=`<div style="font-size:9px;color:var(--text2);padding:2px 5px">+${dayTasks.length-4}</div>`;
-      if(dayTasks.length===0) h+=`<div style="font-size:10px;color:var(--text2);padding:6px 5px;text-align:center">Repos</div>`;
-    }
+    dayT.slice(0,5).forEach(t=>{
+      const sl=t.days.find(x=>x.dow===dow2);
+      const cls=isToday?(t.done?'dt-ok':isLate(t)?'dt-late':'dt-pend'):isPast?'dt-late':'dt-pend';
+      h+=`<div class="day-task ${cls}" title="${t.name} (${sl?sl.pMin+'→'+sl.pMax:''})">${t.animal} ${t.name}</div>`;
+    });
+    if(dayT.length>5) h+=`<div style="font-size:9px;color:var(--text2);padding:2px 5px">+${dayT.length-5}</div>`;
+    if(dayT.length===0) h+=`<div style="font-size:10px;color:var(--text2);padding:6px;text-align:center">Repos</div>`;
     h+=`</div>`;
   }
-  h+=`</div></div>`;
-  h+=`<div class="week-legend">
+  h+=`</div></div>
+  <div class="week-legend" style="margin-top:10px">
     <div class="leg-item"><div class="leg-dot" style="background:var(--green-l);border:1px solid var(--green)"></div>Effectuée</div>
-    <div class="leg-item"><div class="leg-dot" style="background:var(--red-l);border:1px solid var(--red)"></div>En retard / Passée</div>
-    <div class="leg-item"><div class="leg-dot" style="background:var(--gray-l);border:1px solid var(--border)"></div>Planifiée</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--red-l);border:1px solid var(--red)"></div>En retard</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--card2);border:1px solid var(--border)"></div>Planifiée</div>
   </div>`;
   $('view-semaine').innerHTML=h;
 }
 
 // ── ADMIN ─────────────────────────────────────────────────────────────────────
-let newDaysSelected=[1,2,3,4,5,6,0];
-
 function renderAdmin(){
   let h='';
 
-  // Suivi salariés
-  h+=`<div class="section-hd">👥 Suivi des salariés — aujourd'hui</div>`;
+  h+=`<div class="section-hd">👥 Suivi salariés — aujourd'hui</div>`;
   USERS.filter(u=>!u.admin).forEach(u=>{
     const mt=TASKS.filter(t=>t.who===u.id&&isTaskToday(t));
-    const d=mt.filter(t=>t.done).length;
-    const l=mt.filter(t=>isLate(t)).length;
+    const d=mt.filter(t=>t.done).length;const l=mt.filter(t=>isLate(t)).length;
     const obs=OBS[todayKey()+u.id]||'';
     h+=`<div class="emp-card">
       <div class="avatar" style="background:${u.col};color:${u.tc};width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0">${initials(u.name)}</div>
@@ -588,7 +622,7 @@ function renderAdmin(){
         <div class="emp-role">${u.role}${u.tel?' · '+u.tel:''}</div>
         <div class="pills">
           <span class="pill pill-g">${d}/${mt.length} tâches</span>
-          ${l>0?`<span class="pill pill-r">⚠ ${l} en retard</span>`:''}
+          ${l>0?`<span class="pill pill-r">⚠ ${l} retard</span>`:''}
           ${obs?`<span class="pill pill-g">📝 Obs. OK</span>`:`<span class="pill pill-a">📝 Obs. manquante</span>`}
         </div>
         ${obs?`<div class="obs-read">💬 "${obs}"</div>`:''}
@@ -596,37 +630,32 @@ function renderAdmin(){
     </div>`;
   });
 
-  // Alertes & contacts
-  h+=`<div class="section-hd">🔔 Alertes & contacts de notification</div>`;
-  h+=`<div class="alert-contact-box">
-    <div class="alert-contact-title">📲 Coordonnées pour recevoir les alertes</div>
+  h+=`<div class="section-hd">🔔 Alertes & notifications</div>
+  <div class="alert-box-admin">
+    <div class="alert-box-title">📲 Contacts pour les alertes</div>
     <div class="contact-row">
       <span class="contact-label">📱 Téléphone</span>
-      <input class="contact-input" id="alert-tel" type="tel" placeholder="Ex : 06 12 34 56 78" value="${ALERT_SETTINGS.tel}">
-      <button class="notif-toggle${ALERT_SETTINGS.smsOn?' on':''}" onclick="toggleSms()" id="sms-toggle">${ALERT_SETTINGS.smsOn?'✓ SMS activé':'SMS désactivé'}</button>
+      <input class="contact-input" id="alert-tel" type="tel" placeholder="06 12 34 56 78" value="${ALERTS.tel}">
+      <button class="notif-toggle${ALERTS.smsOn?' on':''}" id="sms-tog" onclick="toggleSms()">${ALERTS.smsOn?'✓ SMS on':'SMS off'}</button>
     </div>
     <div class="contact-row">
       <span class="contact-label">📧 Email</span>
-      <input class="contact-input" id="alert-mail" type="email" placeholder="Ex : myriam@parc.fr" value="${ALERT_SETTINGS.mail}">
-      <button class="notif-toggle${ALERT_SETTINGS.mailOn?' on':''}" onclick="toggleMail()" id="mail-toggle">${ALERT_SETTINGS.mailOn?'✓ Mail activé':'Mail désactivé'}</button>
+      <input class="contact-input" id="alert-mail" type="email" placeholder="myriam@parc.fr" value="${ALERTS.mail}">
+      <button class="notif-toggle${ALERTS.mailOn?' on':''}" id="mail-tog" onclick="toggleMail()">${ALERTS.mailOn?'✓ Mail on':'Mail off'}</button>
     </div>
     <div class="contact-row">
       <span class="contact-label">⏱ Délai retard</span>
-      <input class="contact-input param-input" id="alert-delay" type="number" value="${ALERT_SETTINGS.alertDelay}" min="0" max="60" style="width:70px"> min après la plage max
+      <input class="contact-input" id="alert-delay" type="number" value="${ALERTS.delay}" min="0" max="60" style="width:70px"> min après la plage max
     </div>
     <div class="contact-row">
       <span class="contact-label">📝 Rappel obs.</span>
-      <input class="contact-input param-input" id="obs-reminder" type="time" value="${ALERT_SETTINGS.obsHeure}" style="width:110px">
-      <span style="font-size:12px;color:var(--text2)">si observation non saisie</span>
+      <input class="contact-input" id="obs-h" type="time" value="${ALERTS.obsH}" style="width:110px">
+      <span style="font-size:12px;color:var(--text2)">si non saisie</span>
     </div>
-    <button class="save-contact-btn" onclick="saveAlertSettings()">💾 Enregistrer les paramètres d'alerte</button>
-    <div class="saved-msg hidden" id="alert-saved">✓ Paramètres enregistrés !</div>
-    <div style="font-size:11px;color:var(--text2);margin-top:10px;background:rgba(255,255,255,.6);border-radius:8px;padding:8px">
-      ⚠️ Les envois SMS/mail nécessitent une connexion à un service externe (Twilio, Mailjet...). Pour l'instant les alertes visuelles sont actives dans l'appli. Demande à Claude comment connecter les notifications réelles.
-    </div>
+    <button class="save-contact-btn" onclick="saveAlerts()">💾 Enregistrer</button>
+    <div class="info-tip">⚠️ Les alertes visuelles sont actives dans l'appli. Pour SMS/mail réels, connecte un service externe (ex : Twilio, Mailjet). Demande à Claude comment faire.</div>
   </div>`;
 
-  // Gestion tâches
   h+=`<div class="section-hd">📋 Tâches du planning</div>`;
   TASKS.forEach(t=>{
     const who=getUser(t.who);
@@ -634,131 +663,105 @@ function renderAdmin(){
       <span style="font-size:20px">${t.animal}</span>
       <div class="task-param-body">
         <div class="task-param-name">${t.name}</div>
-        <div class="task-param-meta">👤 ${who?who.prenom:'?'} · ${slotLabel(t.slot)} · ⏰ ${t.plageMin}→${t.plageMax}</div>
-        <div class="task-param-days">📅 ${daysLabel(t.days)}</div>
+        <div class="task-param-meta">👤 ${who?who.prenom:'?'} · ${slotLabel(t.slot)}</div>
+        <div class="task-param-days">📅 ${daysLabel(t)}</div>
+        <div class="task-param-meta" style="color:var(--text2);font-size:10px">Horaires : ${t.days.map(d=>DAYS_FR[d.dow]+' '+d.pMin+'→'+d.pMax).join(' | ')}</div>
       </div>
       <button class="del-btn" onclick="deleteTask(${t.id})">🗑</button>
     </div>`;
   });
 
-  // Ajout tâche
   h+=`<div class="add-form">
-    <div class="add-form-title">➕ Ajouter une tâche au planning</div>
+    <div class="add-form-title">➕ Ajouter une tâche avec horaires par jour</div>
     <div class="form-grid">
       <div class="full"><label class="flabel">Nom de la tâche</label><input class="finput" id="nt-name" placeholder="Ex : Nourrissage tortues"></div>
-      <div><label class="flabel">Salarié responsable</label><select class="fselect" id="nt-who">${USERS.filter(u=>!u.admin).map(u=>`<option value="${u.id}">${u.prenom}</option>`).join('')}</select></div>
+      <div><label class="flabel">Salarié</label><select class="fselect" id="nt-who">${USERS.filter(u=>!u.admin).map(u=>`<option value="${u.id}">${u.prenom}</option>`).join('')}</select></div>
       <div><label class="flabel">Créneau</label><select class="fselect" id="nt-slot"><option value="matin">Matin</option><option value="midi">Midi</option><option value="soir">Soir</option><option value="continu">Continu</option></select></div>
-      <div><label class="flabel">Heure début plage</label><input class="finput" id="nt-pmin" type="time" value="08:00"></div>
-      <div><label class="flabel">Heure fin plage</label><input class="finput" id="nt-pmax" type="time" value="09:00"></div>
       <div><label class="flabel">Emoji animal</label><input class="finput" id="nt-animal" placeholder="🐾" style="font-size:18px"></div>
       <div class="full">
-        <label class="flabel">📅 Jours de la semaine</label>
-        <div class="days-grid" id="days-grid">
-          ${['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'].map((d,i)=>{
-            const dow=[1,2,3,4,5,6,0][i];
-            return `<button type="button" class="day-toggle on" id="dtog-${dow}" onclick="toggleDay(${dow})">${d}</button>`;
-          }).join('')}
+        <label class="flabel">📅 Jours & horaires — coche les jours actifs et règle l'heure pour chacun</label>
+        <div style="margin-top:8px" id="days-config">
+          ${[{dow:1,l:'Lun'},{dow:2,l:'Mar'},{dow:3,l:'Mer'},{dow:4,l:'Jeu'},{dow:5,l:'Ven'},{dow:6,l:'Sam'},{dow:0,l:'Dim'}].map(d=>`
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;padding:8px;background:var(--bg2);border-radius:8px;border:1px solid var(--border)">
+            <input type="checkbox" id="dc-${d.dow}" checked style="width:16px;height:16px;accent-color:var(--green)">
+            <label for="dc-${d.dow}" style="font-size:12px;font-weight:600;color:var(--text);width:30px">${d.l}</label>
+            <span style="font-size:11px;color:var(--text2)">De</span>
+            <input type="time" id="dc-min-${d.dow}" value="08:00" class="mfinput" style="width:90px">
+            <span style="font-size:11px;color:var(--text2)">à</span>
+            <input type="time" id="dc-max-${d.dow}" value="09:00" class="mfinput" style="width:90px">
+          </div>`).join('')}
+        </div>
+        <div style="display:flex;gap:8px;margin-top:6px">
+          <button class="save-btn gray" onclick="checkAllDays(true)" style="font-size:11px;padding:5px 10px">✓ Tous</button>
+          <button class="save-btn gray" onclick="checkWeekDays()" style="font-size:11px;padding:5px 10px">Lun→Ven</button>
+          <button class="save-btn gray" onclick="checkAllDays(false)" style="font-size:11px;padding:5px 10px">✗ Aucun</button>
         </div>
       </div>
-      <div class="full" style="display:flex;gap:10px;margin-top:4px">
-        <button class="save-btn" onclick="addTask()">✅ Ajouter au planning</button>
-        <button class="save-btn" style="background:var(--gray)" onclick="selectAllDays()">Tous les jours</button>
-        <button class="save-btn" style="background:var(--blue)" onclick="selectWeekDays()">Lun→Ven</button>
-      </div>
+      <div class="full"><button class="save-btn" onclick="addTask()">✅ Ajouter au planning</button></div>
     </div>
   </div>`;
 
-  // Gestion salariés
-  h+=`<div class="section-hd">👤 Salariés — gestion complète</div>`;
+  h+=`<div class="section-hd">👤 Salariés — gestion</div>`;
   USERS.forEach(u=>{
     h+=`<div class="emp-card">
       <div class="avatar" style="background:${u.col};color:${u.tc};width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0">${initials(u.name)}</div>
       <div class="emp-body">
-        <div class="emp-name">${u.name} ${u.admin?'👑':''}</div>
+        <div class="emp-name">${u.name}${u.admin?' 👑':''}</div>
         <div class="emp-role">${u.role}${u.tel?' · '+u.tel:''}${u.mail?' · '+u.mail:''}</div>
-        <div class="pills"><span class="pill pill-g">PIN : ${u.pin}</span>${u.admin?'<span class="pill pill-a">Admin</span>':''}</div>
+        <div class="pills"><span class="pill pill-b">PIN : ${u.pin}</span>${u.admin?'<span class="pill pill-a">Admin</span>':''}</div>
       </div>
       ${!u.admin?`<button class="del-btn" onclick="deleteUser('${u.id}')">🗑 Supprimer</button>`:''}
     </div>`;
   });
 
-  // Ajout salarié
   h+=`<div class="add-form" style="margin-top:10px">
-    <div class="add-form-title">➕ Ajouter un salarié</div>
+    <div class="add-form-title">➕ Créer un salarié</div>
     <div class="form-grid">
-      <div><label class="flabel">Prénom</label><input class="finput" id="nu-prenom" placeholder="Ex : Thomas"></div>
-      <div><label class="flabel">Nom</label><input class="finput" id="nu-nom" placeholder="Ex : Martin"></div>
-      <div><label class="flabel">Rôle / poste</label><input class="finput" id="nu-role" placeholder="Ex : Soigneur animaux"></div>
+      <div><label class="flabel">Prénom *</label><input class="finput" id="nu-prenom" placeholder="Thomas"></div>
+      <div><label class="flabel">Nom</label><input class="finput" id="nu-nom" placeholder="Martin"></div>
+      <div><label class="flabel">Rôle / poste *</label><input class="finput" id="nu-role" placeholder="Soigneur animaux"></div>
       <div><label class="flabel">Téléphone</label><input class="finput" id="nu-tel" type="tel" placeholder="06 XX XX XX XX"></div>
-      <div><label class="flabel">Email</label><input class="finput" id="nu-mail" type="email" placeholder="prenom@parc.fr"></div>
-      <div><label class="flabel">Code PIN (4 chiffres)</label><input class="finput" id="nu-pin" type="number" placeholder="Ex : 6789" maxlength="4" min="0" max="9999"></div>
-      <div class="full" style="margin-top:4px">
-        <button class="save-btn" onclick="addUser()">✅ Créer le salarié</button>
-      </div>
+      <div class="full"><label class="flabel">Email</label><input class="finput" id="nu-mail" type="email" placeholder="prenom@parc.fr"></div>
+      <div><label class="flabel">PIN (4 chiffres) *</label><input class="finput" id="nu-pin" type="number" placeholder="6789" min="0" max="9999"></div>
+      <div class="full"><button class="save-btn" onclick="addUser()">✅ Créer le salarié</button></div>
     </div>
   </div>`;
 
   $('view-admin').innerHTML=h;
-  newDaysSelected=[1,2,3,4,5,6,0];
 }
 
-// ── Jours toggle ─────────────────────────────────────────────────────────────
-function toggleDay(dow){
-  const idx=newDaysSelected.indexOf(dow);
-  if(idx>=0) newDaysSelected.splice(idx,1);
-  else newDaysSelected.push(dow);
-  const btn=$('dtog-'+dow);
-  if(btn) btn.classList.toggle('on', newDaysSelected.includes(dow));
+function checkAllDays(v){[0,1,2,3,4,5,6].forEach(d=>{const el=$('dc-'+d);if(el) el.checked=v;});}
+function checkWeekDays(){[0,1,2,3,4,5,6].forEach(d=>{const el=$('dc-'+d);if(el) el.checked=[1,2,3,4,5].includes(d);});}
+function toggleSms(){ALERTS.smsOn=!ALERTS.smsOn;const b=$('sms-tog');if(b){b.classList.toggle('on',ALERTS.smsOn);b.textContent=ALERTS.smsOn?'✓ SMS on':'SMS off';}}
+function toggleMail(){ALERTS.mailOn=!ALERTS.mailOn;const b=$('mail-tog');if(b){b.classList.toggle('on',ALERTS.mailOn);b.textContent=ALERTS.mailOn?'✓ Mail on':'Mail off';}}
+function saveAlerts(){
+  ALERTS.tel=($('alert-tel')||{value:''}).value;
+  ALERTS.mail=($('alert-mail')||{value:''}).value;
+  ALERTS.delay=parseInt(($('alert-delay')||{value:'0'}).value)||0;
+  ALERTS.obsH=($('obs-h')||{value:'17:00'}).value;
+  showNotif('✅ Paramètres alertes enregistrés','warn');
 }
-function selectAllDays(){ newDaysSelected=[1,2,3,4,5,6,0]; [1,2,3,4,5,6,0].forEach(d=>{ const b=$('dtog-'+d); if(b) b.classList.add('on'); }); }
-function selectWeekDays(){ newDaysSelected=[1,2,3,4,5]; [1,2,3,4,5,6,0].forEach(d=>{ const b=$('dtog-'+d); if(b) b.classList.toggle('on',[1,2,3,4,5].includes(d)); }); }
-
-// ── Alert settings ───────────────────────────────────────────────────────────
-function toggleSms(){
-  ALERT_SETTINGS.smsOn=!ALERT_SETTINGS.smsOn;
-  const btn=$('sms-toggle');
-  if(btn){ btn.classList.toggle('on',ALERT_SETTINGS.smsOn); btn.textContent=ALERT_SETTINGS.smsOn?'✓ SMS activé':'SMS désactivé'; }
-}
-function toggleMail(){
-  ALERT_SETTINGS.mailOn=!ALERT_SETTINGS.mailOn;
-  const btn=$('mail-toggle');
-  if(btn){ btn.classList.toggle('on',ALERT_SETTINGS.mailOn); btn.textContent=ALERT_SETTINGS.mailOn?'✓ Mail activé':'Mail désactivé'; }
-}
-function saveAlertSettings(){
-  ALERT_SETTINGS.tel=($('alert-tel')||{value:''}).value;
-  ALERT_SETTINGS.mail=($('alert-mail')||{value:''}).value;
-  ALERT_SETTINGS.alertDelay=parseInt(($('alert-delay')||{value:'0'}).value)||0;
-  ALERT_SETTINGS.obsHeure=($('obs-reminder')||{value:'17:00'}).value;
-  const msg=$('alert-saved');
-  if(msg){ msg.classList.remove('hidden'); setTimeout(()=>msg.classList.add('hidden'),2500); }
-}
-
-// ── CRUD tâches & salariés ───────────────────────────────────────────────────
-function deleteTask(id){
-  if(!confirm('Supprimer cette tâche du planning ?')) return;
-  TASKS=TASKS.filter(t=>t.id!==id); renderAdmin();
-}
+function deleteTask(id){if(!confirm('Supprimer cette tâche ?')) return;TASKS=TASKS.filter(t=>t.id!==id);renderAdmin();}
 function addTask(){
   const name=($('nt-name').value||'').trim();
-  if(!name){ alert('Merci de saisir un nom de tâche.'); return; }
-  if(newDaysSelected.length===0){ alert('Sélectionne au moins un jour.'); return; }
-  TASKS.push({
-    id:nextId++,name,
-    who:$('nt-who').value,
-    slot:$('nt-slot').value,
-    plageMin:$('nt-pmin').value||'08:00',
-    plageMax:$('nt-pmax').value||'09:00',
-    animal:($('nt-animal').value||'🐾').trim()||'🐾',
-    days:[...newDaysSelected],
-    done:false,doneAt:null
+  if(!name){alert('Nom de tâche requis.');return;}
+  const days=[];
+  [{dow:1},{dow:2},{dow:3},{dow:4},{dow:5},{dow:6},{dow:0}].forEach(({dow})=>{
+    const cb=$('dc-'+dow);
+    if(cb&&cb.checked){
+      const pMin=($('dc-min-'+dow)||{value:'08:00'}).value;
+      const pMax=($('dc-max-'+dow)||{value:'09:00'}).value;
+      days.push({dow,pMin,pMax});
+    }
   });
-  renderAdmin();
+  if(days.length===0){alert('Sélectionne au moins un jour.');return;}
+  TASKS.push({id:nextId++,name,who:$('nt-who').value,slot:$('nt-slot').value,animal:($('nt-animal').value||'🐾').trim()||'🐾',days,done:false,doneAt:null,todayOverride:null});
+  renderAdmin();showNotif('✅ Tâche ajoutée au planning','warn');
 }
 function deleteUser(id){
-  const u=USERS.find(x=>x.id===id);
-  if(!u) return;
-  if(!confirm(`Supprimer ${u.name} ? Ses tâches ne seront pas supprimées.`)) return;
-  USERS=USERS.filter(x=>x.id!==id); renderAdmin(); buildLogin();
+  const u=USERS.find(x=>x.id===id);if(!u) return;
+  if(!confirm('Supprimer '+u.name+' ?')) return;
+  USERS=USERS.filter(x=>x.id!==id);renderAdmin();buildLogin();
 }
 function addUser(){
   const prenom=($('nu-prenom').value||'').trim();
@@ -766,22 +769,22 @@ function addUser(){
   const role=($('nu-role').value||'').trim();
   const tel=($('nu-tel').value||'').trim();
   const mail=($('nu-mail').value||'').trim();
-  const pin=String($('nu-pin').value||'').trim();
-  if(!prenom){ alert('Le prénom est obligatoire.'); return; }
-  if(pin.length!==4||isNaN(pin)){ alert('Le PIN doit être exactement 4 chiffres.'); return; }
-  if(USERS.find(u=>u.pin===pin)){ alert('Ce PIN est déjà utilisé par un autre salarié.'); return; }
-  const colors=[['#E1F5EE','#085041'],['#E6F1FB','#0C447C'],['#EEEDFE','#3C3489'],['#F5C4B3','#712B13'],['#C0DD97','#27500A'],['#FAEEDA','#633806']];
-  const [col,tc]=colors[USERS.length%colors.length];
-  const id=(prenom+nom).toLowerCase().replace(/\s/g,'').replace(/[éèê]/g,'e').replace(/[àâ]/g,'a').slice(0,12)+Date.now().toString().slice(-3);
+  const pin=String($('nu-pin').value||'').padStart(4,'0').slice(-4);
+  if(!prenom){alert('Prénom obligatoire.');return;}
+  if(!/^\d{4}$/.test(pin)){alert('PIN : exactement 4 chiffres.');return;}
+  if(USERS.find(u=>u.pin===pin)){alert('Ce PIN est déjà utilisé.');return;}
+  const cols=[['#0a2a1a','#1fba85'],['#0a1a3a','#4090e0'],['#2a1a3a','#c090ff'],['#3a1a1a','#ff8080'],['#1a2a0a','#90d040'],['#3a2a10','#e8a020']];
+  const [col,tc]=cols[USERS.filter(u=>!u.admin).length%cols.length];
+  const id=prenom.toLowerCase().replace(/[^a-z]/g,'')+Date.now().toString().slice(-4);
   USERS.push({id,name:prenom+(nom?' '+nom:''),prenom,role:role||'Salarié',pin,col,tc,admin:false,tel,mail});
-  renderAdmin(); buildLogin();
-  alert(`✅ ${prenom} ajouté(e) ! PIN : ${pin}`);
+  renderAdmin();buildLogin();
+  showNotif('✅ '+prenom+' ajouté(e) — PIN : '+pin,'warn');
 }
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
 buildLogin();
-setInterval(()=>{ if(STATE.user && STATE.tab==='jour'){ updateClock(); } }, 30000);
-setInterval(()=>{ if(STATE.user){ checkAlerts(); } }, 5*60*1000);
+setInterval(()=>{const el=$('live-time');if(el) el.textContent=formatTime();},30000);
+setInterval(()=>{if(STATE.user) checkAlerts();},5*60*1000);
 </script>
 
 
