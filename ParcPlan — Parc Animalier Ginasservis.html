@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)file:///C:/Users/Olivia/Downloads/index.html -->
+<html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ParcPlan — Parc Animalier Ginasservis</title>
+<meta name="theme-color" content="#1D9E75">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#1D9E75;--green-l:#E1F5EE;--green-d:#085041;
+  --amber:#BA7517;--amber-l:#FAEEDA;
+  --red:#A32D2D;--red-l:#FCEBEB;
+  --blue:#185FA5;--blue-l:#E6F1FB;
+  --purple:#534AB7;--purple-l:#EEEDFE;
+  --gray:#5F5E5A;--gray-l:#F1EFE8;
+  --bg:#f8f9fa;--card:#fff;--border:#e0e0e0;
+  --text:#2C2C2A;--text2:#5F5E5A;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.hidden{display:none!important}
+
+/* ── LOGIN ── */
+#login{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem;background:var(--bg)}
+.login-logo{text-align:center;margin-bottom:1rem}
+.login-logo img{width:120px;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.login-logo .fallback{width:80px;height:80px;border-radius:50%;background:var(--green-l);display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto}
+.login-title{font-size:22px;font-weight:700;color:var(--green-d);text-align:center;margin-bottom:2px}
+.login-sub{font-size:13px;color:var(--text2);text-align:center;margin-bottom:24px}
+.user-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:360px;margin-bottom:20px}
+.user-card{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:16px 12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;transition:all .2s}
+.user-card:hover{border-color:var(--green);transform:translateY(-2px)}
+.user-card:active{transform:scale(.97)}
+.avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;flex-shrink:0}
+.user-card .uname{font-size:13px;font-weight:600;color:var(--text);text-align:center}
+.user-card .urole{font-size:11px;color:var(--text2);text-align:center}
+
+.pin-box{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:24px;width:100%;max-width:300px;text-align:center}
+.pin-who{font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px}
+.pin-inst{font-size:12px;color:var(--text2);margin-bottom:16px}
+.pin-dots{display:flex;gap:10px;justify-content:center;margin-bottom:16px}
+.dot{width:14px;height:14px;border-radius:50%;border:2px solid var(--border);background:transparent;transition:all .15s}
+.dot.on{background:var(--green);border-color:var(--green)}
+.pin-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.pkey{padding:14px 0;border:1px solid var(--border);border-radius:12px;background:var(--bg);font-size:18px;font-weight:600;cursor:pointer;color:var(--text);transition:all .15s}
+.pkey:hover{background:var(--green-l);border-color:var(--green)}
+.pkey:active{transform:scale(.94)}
+.pin-err{font-size:12px;color:var(--red);margin-top:10px;min-height:18px}
+.back-btn{margin-top:12px;font-size:12px;color:var(--text2);background:none;border:none;cursor:pointer;text-decoration:underline}
+
+/* ── MAIN APP ── */
+#app{min-height:100vh;display:flex;flex-direction:column}
+.topbar{background:var(--card);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.topbar-left{display:flex;align-items:center;gap:10px}
+.top-name{font-size:15px;font-weight:700;color:var(--text)}
+.top-role{font-size:11px;color:var(--text2)}
+.topbar-right{display:flex;align-items:center;gap:8px}
+.top-date{font-size:11px;color:var(--text2)}
+.logout{font-size:12px;padding:5px 10px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:pointer}
+.logout:hover{background:var(--red-l);border-color:var(--red);color:var(--red)}
+
+.tabs{background:var(--card);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;padding:0 12px}
+.tab{padding:12px 16px;font-size:13px;font-weight:500;color:var(--text2);border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap;transition:all .15s}
+.tab.on{color:var(--green);border-bottom-color:var(--green)}
+
+.content{flex:1;padding:16px;max-width:700px;margin:0 auto;width:100%}
+
+/* ── ALERTS ── */
+.alert{border-radius:12px;padding:10px 14px;margin-bottom:10px;font-size:13px;display:flex;align-items:flex-start;gap:8px}
+.alert.danger{background:var(--red-l);color:var(--red)}
+.alert.warn{background:var(--amber-l);color:var(--amber)}
+.alert.ok{background:var(--green-l);color:var(--green-d)}
+.alert.info{background:var(--blue-l);color:var(--blue)}
+.alert-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+
+/* ── STATS ── */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px 8px;text-align:center}
+.stat-n{font-size:24px;font-weight:700}
+.stat-l{font-size:10px;color:var(--text2);margin-top:2px}
+.cg{color:var(--green)}.ca{color:var(--amber)}.cr{color:var(--red)}.cb{color:var(--blue)}
+
+.progbar{height:6px;background:var(--gray-l);border-radius:3px;margin-bottom:14px;overflow:hidden}
+.progfill{height:100%;background:var(--green);border-radius:3px;transition:width .5s}
+
+/* ── FILTERS ── */
+.filters{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.fbtn{font-size:12px;padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:var(--card);color:var(--text2);cursor:pointer;transition:all .15s}
+.fbtn.on{background:var(--green-l);color:var(--green-d);border-color:var(--green);font-weight:600}
+
+/* ── TASKS ── */
+.task{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 14px;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start;transition:all .2s}
+.task.done{border-color:#9FE1CB;background:#f2fcf8}
+.task.late{border-color:#F7C1C1;background:#fff5f5}
+.ck{width:28px;height:28px;min-width:28px;border-radius:50%;border:2px solid var(--border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all .2s;margin-top:2px}
+.ck.done{background:var(--green);border-color:var(--green);color:#fff}
+.ck.late{background:var(--red);border-color:var(--red);color:#fff}
+.task-body{flex:1;min-width:0}
+.task-top{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:4px}
+.task-name{font-size:14px;font-weight:600;color:var(--text)}
+.task-name.done{text-decoration:line-through;color:var(--text2)}
+.badge{font-size:10px;padding:2px 8px;border-radius:20px;font-weight:600}
+.bm{background:var(--blue-l);color:#0C447C}
+.bmi{background:var(--amber-l);color:#633806}
+.bs{background:var(--purple-l);color:#3C3489}
+.bc{background:var(--green-l);color:var(--green-d)}
+.blate{background:var(--red-l);color:var(--red)}
+.task-meta{font-size:12px;color:var(--text2)}
+.task-stamp{font-size:11px;color:var(--green);margin-top:3px;font-weight:500}
+.task-plage{font-size:11px;color:var(--text2);margin-top:2px}
+
+/* ── OBSERVATION ── */
+.obs-card{background:var(--card);border:1.5px solid var(--amber);border-radius:14px;padding:14px;margin-top:16px}
+.obs-card.saved{border-color:var(--green)}
+.obs-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.obs-req{font-size:10px;padding:2px 8px;border-radius:20px;background:var(--amber-l);color:var(--amber);font-weight:700}
+.obs-req.ok{background:var(--green-l);color:var(--green-d)}
+.obs-sub{font-size:12px;color:var(--text2);margin-bottom:10px}
+.obs-ta{width:100%;min-height:80px;resize:vertical;border-radius:10px;border:1px solid var(--border);padding:10px;font-size:13px;font-family:inherit;color:var(--text);background:var(--bg)}
+.obs-ta:focus{outline:none;border-color:var(--green)}
+.obs-save{margin-top:10px;padding:8px 20px;border-radius:10px;border:none;background:var(--green);color:#fff;font-size:13px;font-weight:700;cursor:pointer;transition:opacity .2s}
+.obs-save:hover{opacity:.85}
+.obs-saved-msg{font-size:12px;color:var(--green);margin-top:6px;font-weight:600}
+
+/* ── WEEK VIEW ── */
+.week-wrap{overflow-x:auto}
+.week-grid{display:grid;grid-template-columns:repeat(7,minmax(80px,1fr));gap:4px;min-width:560px}
+.day-col{border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.day-hd{padding:8px 4px;text-align:center;background:var(--gray-l)}
+.day-hd.today{background:var(--green-l)}
+.day-dn{font-size:10px;font-weight:600;color:var(--text2)}
+.day-dt{font-size:14px;font-weight:700;color:var(--text)}
+.day-hd.today .day-dn{color:var(--green)}
+.day-hd.today .day-dt{color:var(--green-d)}
+.day-task{font-size:10px;padding:3px 5px;margin:3px;border-radius:5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dt-ok{background:var(--green-l);color:var(--green-d)}
+.dt-late{background:var(--red-l);color:var(--red)}
+.dt-pend{background:var(--gray-l);color:var(--gray)}
+.week-legend{display:flex;gap:12px;margin-top:8px;flex-wrap:wrap}
+.leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2)}
+.leg-dot{width:10px;height:10px;border-radius:3px}
+
+/* ── ADMIN ── */
+.section-hd{font-size:12px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.08em;margin:20px 0 10px}
+.emp-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 14px;margin-bottom:8px;display:flex;align-items:flex-start;gap:12px}
+.emp-body{flex:1;min-width:0}
+.emp-name{font-size:14px;font-weight:700;color:var(--text)}
+.emp-role{font-size:12px;color:var(--text2);margin-bottom:6px}
+.pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.pill{font-size:11px;padding:2px 9px;border-radius:20px;font-weight:600}
+.pill-g{background:var(--green-l);color:var(--green-d)}
+.pill-r{background:var(--red-l);color:var(--red)}
+.pill-a{background:var(--amber-l);color:var(--amber)}
+.obs-read{background:var(--gray-l);border-radius:8px;padding:8px 10px;margin-top:8px;font-size:12px;color:var(--text2);border-left:3px solid var(--green)}
+
+.param-row{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px 14px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.param-label{flex:1}
+.param-lname{font-size:13px;font-weight:600;color:var(--text)}
+.param-ldesc{font-size:11px;color:var(--text2);margin-top:2px}
+.param-input{width:130px;font-size:13px;padding:6px 10px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text)}
+.param-input:focus{outline:none;border-color:var(--green)}
+
+.task-param{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px 14px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.task-param-body{flex:1}
+.task-param-name{font-size:13px;font-weight:600;color:var(--text)}
+.task-param-meta{font-size:11px;color:var(--text2);margin-top:2px}
+.del-btn{padding:5px 10px;border-radius:8px;border:1px solid var(--red-l);background:var(--red-l);color:var(--red);font-size:12px;font-weight:600;cursor:pointer}
+.del-btn:hover{background:var(--red);color:#fff}
+
+.add-form{background:var(--gray-l);border-radius:14px;padding:14px;margin-top:12px}
+.add-form-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:12px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.form-grid .full{grid-column:1/-1}
+.finput{width:100%;font-size:13px;padding:8px 10px;border-radius:8px;border:1px solid var(--border);background:var(--card);color:var(--text)}
+.finput:focus{outline:none;border-color:var(--green)}
+.fselect{width:100%;font-size:13px;padding:8px 10px;border-radius:8px;border:1px solid var(--border);background:var(--card);color:var(--text)}
+.flabel{font-size:11px;color:var(--text2);margin-bottom:3px;display:block;font-weight:600}
+.save-btn{padding:9px 20px;border-radius:10px;border:none;background:var(--green);color:#fff;font-size:13px;font-weight:700;cursor:pointer;transition:opacity .2s}
+.save-btn:hover{opacity:.85}
+.cancel-btn{padding:9px 16px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--text2);font-size:13px;cursor:pointer}
+
+.plage-row{display:flex;align-items:center;gap:8px;margin-top:6px}
+.plage-label{font-size:11px;color:var(--text2);font-weight:600;white-space:nowrap}
+.plage-input{width:90px;font-size:12px;padding:5px 7px;border-radius:7px;border:1px solid var(--border);background:var(--card);color:var(--text)}
+
+.empty{text-align:center;padding:2rem;color:var(--text2);font-size:13px}
+
+@media(max-width:480px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .form-grid{grid-template-columns:1fr}
+  .form-grid .full{grid-column:1}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ LOGIN ══════════════════════════════════════════════════════════════ -->
+<div id="login">
+  <div class="login-logo">
+    <div class="fallback">🐾</div>
+  </div>
+  <div class="login-title">ParcPlan</div>
+  <div class="login-sub">Parc Animalier Ginasservis — Qui êtes-vous ?</div>
+  <div class="user-grid" id="user-grid">
+    <div class="user-card" onclick="selectUser(&#39;myriam&#39;)">
+      <div class="avatar" style="background:#FAEEDA;color:#633806">MY</div>
+      <div class="uname">Myriam</div>
+      <div class="urole">Responsable / Admin</div>
+    </div>
+    <div class="user-card" onclick="selectUser(&#39;sophie&#39;)">
+      <div class="avatar" style="background:#E1F5EE;color:#085041">SO</div>
+      <div class="uname">Sophie</div>
+      <div class="urole">Soigneuse animaux</div>
+    </div>
+    <div class="user-card" onclick="selectUser(&#39;lucas&#39;)">
+      <div class="avatar" style="background:#E6F1FB;color:#0C447C">LU</div>
+      <div class="uname">Lucas</div>
+      <div class="urole">Agent entretien</div>
+    </div>
+    <div class="user-card" onclick="selectUser(&#39;emma&#39;)">
+      <div class="avatar" style="background:#EEEDFE;color:#3C3489">EM</div>
+      <div class="uname">Emma</div>
+      <div class="urole">Soigneuse &amp; accueil</div>
+    </div>
+    <div class="user-card" onclick="selectUser(&#39;kevin&#39;)">
+      <div class="avatar" style="background:#F5C4B3;color:#712B13">KÉ</div>
+      <div class="uname">Kévin</div>
+      <div class="urole">Agent polyvalent</div>
+    </div>
+    <div class="user-card" onclick="selectUser(&#39;lea&#39;)">
+      <div class="avatar" style="background:#C0DD97;color:#27500A">LÉ</div>
+      <div class="uname">Léa</div>
+      <div class="urole">Stagiaire / Accueil</div>
+    </div></div>
+  <div class="pin-box hidden" id="pin-box">
+    <div class="pin-who" id="pin-who"></div>
+    <div class="pin-inst">Entrez votre code PIN à 4 chiffres</div>
+    <div class="pin-dots" id="pin-dots"></div>
+    <div class="pin-pad" id="pin-pad"><button class="pkey" onclick="pinPress(&#39;1&#39;)">1</button><button class="pkey" onclick="pinPress(&#39;2&#39;)">2</button><button class="pkey" onclick="pinPress(&#39;3&#39;)">3</button><button class="pkey" onclick="pinPress(&#39;4&#39;)">4</button><button class="pkey" onclick="pinPress(&#39;5&#39;)">5</button><button class="pkey" onclick="pinPress(&#39;6&#39;)">6</button><button class="pkey" onclick="pinPress(&#39;7&#39;)">7</button><button class="pkey" onclick="pinPress(&#39;8&#39;)">8</button><button class="pkey" onclick="pinPress(&#39;9&#39;)">9</button><button class="pkey" onclick="pinPress(&#39;&#39;)"></button><button class="pkey" onclick="pinPress(&#39;0&#39;)">0</button><button class="pkey" onclick="pinPress(&#39;⌫&#39;)">⌫</button></div>
+    <div class="pin-err" id="pin-err"></div>
+    <button class="back-btn" onclick="cancelPin()">← Choisir un autre utilisateur</button>
+  </div>
+</div>
+
+<!-- ══ APP ════════════════════════════════════════════════════════════════ -->
+<div id="app" class="hidden">
+  <div class="topbar">
+    <div class="topbar-left">
+      <div class="avatar" id="tb-avatar"></div>
+      <div>
+        <div class="top-name" id="tb-name"></div>
+        <div class="top-role" id="tb-role"></div>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <span class="top-date" id="tb-date"></span>
+      <button class="logout" onclick="logout()">⏻ Quitter</button>
+    </div>
+  </div>
+  <div class="tabs" id="tabs"></div>
+  <div class="content">
+    <div id="view-jour"></div>
+    <div id="view-semaine" class="hidden"></div>
+    <div id="view-admin" class="hidden"></div>
+  </div>
+</div>
+
+<script>
+// ══ DONNÉES ══════════════════════════════════════════════════════════════════
+const USERS = [
+  {id:'myriam',name:'Myriam',prenom:'Myriam',role:'Responsable / Admin',pin:'0000',col:'#FAEEDA',tc:'#633806',admin:true,tel:'',mail:'asinella@outlook.fr'},
+  {id:'sophie',name:'Sophie',prenom:'Sophie',role:'Soigneuse animaux',pin:'1111',col:'#E1F5EE',tc:'#085041',admin:false,tel:'06 XX XX XX XX',mail:''},
+  {id:'lucas',name:'Lucas',prenom:'Lucas',role:'Agent entretien',pin:'2222',col:'#E6F1FB',tc:'#0C447C',admin:false,tel:'06 XX XX XX XX',mail:''},
+  {id:'emma',name:'Emma',prenom:'Emma',role:'Soigneuse & accueil',pin:'3333',col:'#EEEDFE',tc:'#3C3489',admin:false,tel:'06 XX XX XX XX',mail:''},
+  {id:'kevin',name:'Kévin',prenom:'Kévin',role:'Agent polyvalent',pin:'4444',col:'#F5C4B3',tc:'#712B13',admin:false,tel:'06 XX XX XX XX',mail:''},
+  {id:'lea',name:'Léa',prenom:'Léa',role:'Stagiaire / Accueil',pin:'5555',col:'#C0DD97',tc:'#27500A',admin:false,tel:'06 XX XX XX XX',mail:''},
+];
+
+let TASKS = [
+  {id:1,name:'Nourrissage perroquets & oiseaux',who:'sophie',slot:'matin',heure:'08:00',plageMin:'08:00',plageMax:'09:00',animal:'🦜',done:false,doneAt:null},
+  {id:2,name:'Nourrissage chèvres & ânes',who:'lucas',slot:'matin',heure:'08:30',plageMin:'08:00',plageMax:'09:30',animal:'🐐',done:false,doneAt:null},
+  {id:3,name:'Nettoyage enclos chameaux',who:'sophie',slot:'matin',heure:'09:00',plageMin:'09:00',plageMax:'10:00',animal:'🐪',done:false,doneAt:null},
+  {id:4,name:'Contrôle eau & abreuvoirs',who:'lucas',slot:'matin',heure:'09:30',plageMin:'09:00',plageMax:'10:30',animal:'💧',done:false,doneAt:null},
+  {id:5,name:'Visite sanitaire rapide',who:'myriam',slot:'matin',heure:'10:00',plageMin:'10:00',plageMax:'11:00',animal:'🩺',done:false,doneAt:null},
+  {id:6,name:'Accueil visiteurs & billetterie',who:'lea',slot:'matin',heure:'10:00',plageMin:'10:00',plageMax:'10:30',animal:'🎟️',done:false,doneAt:null},
+  {id:7,name:'Nourrissage reptiles',who:'sophie',slot:'midi',heure:'12:00',plageMin:'12:00',plageMax:'13:00',animal:'🦎',done:false,doneAt:null},
+  {id:8,name:'Alimentation cheval & poney',who:'kevin',slot:'midi',heure:'12:30',plageMin:'12:00',plageMax:'13:30',animal:'🐴',done:false,doneAt:null},
+  {id:9,name:'Nettoyage allées visiteurs',who:'kevin',slot:'continu',heure:'Toute la journée',plageMin:'08:00',plageMax:'18:00',animal:'🧹',done:false,doneAt:null},
+  {id:10,name:'Nourrissage soir — tous animaux',who:'sophie',slot:'soir',heure:'17:30',plageMin:'17:00',plageMax:'18:30',animal:'🍃',done:false,doneAt:null},
+  {id:11,name:'Fermeture & sécurité enclos',who:'lucas',slot:'soir',heure:'19:00',plageMin:'18:30',plageMax:'19:30',animal:'🔒',done:false,doneAt:null},
+  {id:12,name:'Rapport journalier admin',who:'myriam',slot:'soir',heure:'18:00',plageMin:'17:30',plageMax:'19:00',animal:'📋',done:false,doneAt:null},
+];
+
+let OBS = {};
+let STATE = {user:null, pin:'', pinTarget:null, filter:'all', tab:'jour'};
+let nextTaskId = 20;
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
+const nm = () => { const n=new Date(); return n.getHours()*60+n.getMinutes(); };
+const toMin = s => { if(!s||s.includes('journée')) return 99999; const[h,m]=s.split(':').map(Number); return h*60+m; };
+const isLate = t => !t.done && nm() > toMin(t.plageMax);
+const todayKey = () => new Date().toISOString().slice(0,10);
+const initials = n => n.slice(0,2).toUpperCase();
+const slotLabel = s => s==='matin'?'Matin':s==='midi'?'Midi':s==='soir'?'Soir':'Continu';
+const slotBadge = s => s==='matin'?'bm':s==='midi'?'bmi':s==='soir'?'bs':'bc';
+const getUser = id => USERS.find(u=>u.id===id);
+const $ = id => document.getElementById(id);
+
+// ── LOGIN ────────────────────────────────────────────────────────────────────
+function buildLogin(){
+  $('user-grid').innerHTML = USERS.map(u=>`
+    <div class="user-card" onclick="selectUser('${u.id}')">
+      <div class="avatar" style="background:${u.col};color:${u.tc}">${initials(u.name)}</div>
+      <div class="uname">${u.name}</div>
+      <div class="urole">${u.role}</div>
+    </div>`).join('');
+  buildPinPad();
+}
+
+function buildPinPad(){
+  const keys=[1,2,3,4,5,6,7,8,9,'',0,'⌫'];
+  $('pin-pad').innerHTML=keys.map(k=>`<button class="pkey" onclick="pinPress('${k}')">${k}</button>`).join('');
+}
+
+function renderDots(){
+  $('pin-dots').innerHTML=[0,1,2,3].map(i=>`<div class="dot${i<STATE.pin.length?' on':''}"></div>`).join('');
+}
+
+function selectUser(id){
+  STATE.pinTarget=USERS.find(u=>u.id===id);
+  STATE.pin='';
+  $('pin-who').textContent='Bonjour '+STATE.pinTarget.prenom+' !';
+  $('user-grid').classList.add('hidden');
+  $('pin-box').classList.remove('hidden');
+  $('pin-err').textContent='';
+  renderDots();
+}
+
+function cancelPin(){
+  STATE.pinTarget=null; STATE.pin='';
+  $('pin-box').classList.add('hidden');
+  $('user-grid').classList.remove('hidden');
+}
+
+function pinPress(v){
+  if(v==='') return;
+  if(v==='⌫'){ STATE.pin=STATE.pin.slice(0,-1); renderDots(); return; }
+  if(STATE.pin.length>=4) return;
+  STATE.pin+=String(v);
+  renderDots();
+  if(STATE.pin.length===4){
+    setTimeout(()=>{
+      if(STATE.pin===STATE.pinTarget.pin){ doLogin(STATE.pinTarget); }
+      else { $('pin-err').textContent='Code incorrect — réessayez'; STATE.pin=''; renderDots(); }
+    },250);
+  }
+}
+
+function doLogin(u){
+  STATE.user=u;
+  $('login').classList.add('hidden');
+  $('app').classList.remove('hidden');
+  $('tb-avatar').textContent=initials(u.name);
+  $('tb-avatar').style.cssText=`background:${u.col};color:${u.tc};width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700`;
+  $('tb-name').textContent=u.name;
+  $('tb-role').textContent=u.role;
+  const d=new Date();
+  $('tb-date').textContent=d.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});
+  buildTabs(); showTab('jour');
+}
+
+function logout(){
+  STATE.user=null; STATE.pin=''; STATE.pinTarget=null; STATE.filter='all'; STATE.tab='jour';
+  $('app').classList.add('hidden');
+  $('login').classList.remove('hidden');
+  $('pin-box').classList.add('hidden');
+  $('user-grid').classList.remove('hidden');
+}
+
+// ── TABS ─────────────────────────────────────────────────────────────────────
+function buildTabs(){
+  const tabs=[{id:'jour',label:'📅 Planning du jour'},{id:'semaine',label:'📊 Vue semaine'}];
+  if(STATE.user.admin) tabs.push({id:'admin',label:'⚙️ Administration'});
+  $('tabs').innerHTML=tabs.map(t=>`<div class="tab${STATE.tab===t.id?' on':''}" onclick="showTab('${t.id}')">${t.label}</div>`).join('');
+}
+
+function showTab(id){
+  STATE.tab=id; buildTabs();
+  ['jour','semaine','admin'].forEach(v=>$('view-'+v).classList.add('hidden'));
+  $('view-'+id).classList.remove('hidden');
+  if(id==='jour') renderJour();
+  else if(id==='semaine') renderSemaine();
+  else renderAdmin();
+}
+
+// ── JOUR ─────────────────────────────────────────────────────────────────────
+function renderJour(){
+  const u=STATE.user;
+  const isAdmin=u.admin;
+  let myTasks = isAdmin ? TASKS : TASKS.filter(t=>t.who===u.id);
+  let visible = [...myTasks];
+  if(STATE.filter==='late') visible=visible.filter(t=>isLate(t));
+  else if(STATE.filter!=='all') visible=visible.filter(t=>t.slot===STATE.filter);
+
+  const done=myTasks.filter(t=>t.done).length;
+  const late=myTasks.filter(t=>isLate(t)).length;
+  const att=myTasks.filter(t=>!t.done&&!isLate(t)).length;
+  const pct=myTasks.length?Math.round(done/myTasks.length*100):0;
+  const obsKey=todayKey()+u.id;
+  const savedObs=OBS[obsKey]||'';
+
+  let h='';
+  if(late>0) h+=`<div class="alert danger"><span class="alert-icon">🔴</span><span><strong>${late} tâche${late>1?'s':''} en retard</strong> — heure limite dépassée, à effectuer immédiatement</span></div>`;
+  if(!savedObs && new Date().getHours()>=17) h+=`<div class="alert warn"><span class="alert-icon">📝</span><span>Observation de fin de journée <strong>obligatoire</strong> — merci de la remplir avant de partir</span></div>`;
+  if(att>0 && late===0 && done>0) h+=`<div class="alert info"><span class="alert-icon">⏰</span><span>${att} tâche${att>1?'s':''} encore à effectuer aujourd'hui</span></div>`;
+  if(done===myTasks.length && myTasks.length>0 && savedObs) h+=`<div class="alert ok"><span class="alert-icon">✅</span><span>Journée complète ! Toutes les tâches sont faites et l'observation est enregistrée.</span></div>`;
+
+  h+=`<div class="stats">
+    <div class="stat"><div class="stat-n cg">${done}</div><div class="stat-l">Effectuées</div></div>
+    <div class="stat"><div class="stat-n ca">${att}</div><div class="stat-l">En attente</div></div>
+    <div class="stat"><div class="stat-n cr">${late}</div><div class="stat-l">En retard</div></div>
+    <div class="stat"><div class="stat-n cb">${myTasks.length}</div><div class="stat-l">Total</div></div>
+  </div>
+  <div class="progbar"><div class="progfill" style="width:${pct}%"></div></div>`;
+
+  h+=`<div class="filters">
+    ${['all','matin','midi','soir','continu','late'].map(f=>`<button class="fbtn${STATE.filter===f?' on':''}" onclick="setFilter('${f}')">${f==='all'?'Toutes':f==='late'?'⚠ Retard':f.charAt(0).toUpperCase()+f.slice(1)}</button>`).join('')}
+  </div>`;
+
+  if(visible.length===0){
+    h+=`<div class="empty">Aucune tâche pour ce filtre</div>`;
+  } else {
+    h+=visible.map(t=>{
+      const l=isLate(t); const who=getUser(t.who);
+      return `<div class="task${t.done?' done':l?' late':''}">
+        <button class="ck${t.done?' done':l?' late':''}" onclick="toggleTask(${t.id})" aria-label="Basculer">
+          ${t.done?'✓':l?'!':''}
+        </button>
+        <div class="task-body">
+          <div class="task-top">
+            <span style="font-size:18px">${t.animal}</span>
+            <span class="task-name${t.done?' done':''}">${t.name}</span>
+            <span class="badge ${slotBadge(t.slot)}">${slotLabel(t.slot)}</span>
+            ${l&&!t.done?'<span class="badge blate">⚠ En retard</span>':''}
+          </div>
+          <div class="task-meta">👤 ${who?who.prenom:'?'}</div>
+          <div class="task-plage">🕐 Plage : ${t.plageMin} → ${t.plageMax}${t.slot==='continu'?' (toute la journée)':''}</div>
+          ${t.doneAt?`<div class="task-stamp">✅ Effectuée à ${t.doneAt}</div>`:''}
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  h+=`<div class="obs-card${savedObs?' saved':''}">
+    <div class="obs-title">📝 Observation de fin de journée <span class="obs-req${savedObs?' ok':''}">${savedObs?'✓ Enregistrée':'Obligatoire'}</span></div>
+    <div class="obs-sub">Animaux, incidents, besoins particuliers, remarques pour demain...</div>
+    <textarea class="obs-ta" id="obs-ta" placeholder="Ex : Le cheval Balthazar boite légèrement côté avant gauche, à surveiller. Abreuvoir enclos 3 à vérifier. RAS pour les perroquets.">${savedObs}</textarea>
+    <div style="display:flex;align-items:center;gap:10px;margin-top:8px">
+      <button class="obs-save" onclick="saveObs()">💾 Enregistrer l'observation</button>
+      <span class="obs-saved-msg" id="obs-saved-msg" style="display:${savedObs?'block':'none'}">✓ Sauvegardée</span>
+    </div>
+  </div>`;
+
+  $('view-jour').innerHTML=h;
+}
+
+function toggleTask(id){
+  const t=TASKS.find(x=>x.id===id); if(!t) return;
+  t.done=!t.done;
+  t.doneAt=t.done?new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}):null;
+  renderJour();
+}
+
+function setFilter(f){ STATE.filter=f; renderJour(); }
+
+function saveObs(){
+  const ta=$('obs-ta'); if(!ta) return;
+  const v=ta.value.trim();
+  if(!v){ alert('⚠️ Merci de saisir une observation avant d\'enregistrer.'); return; }
+  OBS[todayKey()+STATE.user.id]=v;
+  renderJour();
+}
+
+// ── SEMAINE ──────────────────────────────────────────────────────────────────
+function renderSemaine(){
+  const days=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
+  const today=new Date(); const dow=today.getDay();
+  const mondayOff=dow===0?-6:1-dow;
+  const myT=STATE.user.admin?TASKS:TASKS.filter(t=>t.who===STATE.user.id);
+  let h=`<div style="font-size:13px;color:var(--text2);margin-bottom:12px">Semaine en cours — ${myT.length} tâche${myT.length>1?'s':''} au planning</div>`;
+  h+=`<div class="week-wrap"><div class="week-grid">`;
+  for(let i=0;i<7;i++){
+    const d=new Date(today); d.setDate(today.getDate()+mondayOff+i);
+    const isToday=d.toDateString()===today.toDateString();
+    const isPast=d<new Date(today.toDateString());
+    h+=`<div class="day-col"><div class="day-hd${isToday?' today':''}">
+      <div class="day-dn">${days[i]}</div>
+      <div class="day-dt">${d.getDate()}</div>
+    </div>`;
+    if(isToday){
+      myT.slice(0,5).forEach(t=>{ const l=isLate(t); h+=`<div class="day-task ${t.done?'dt-ok':l?'dt-late':'dt-pend'}" title="${t.name}">${t.animal} ${t.name}</div>`; });
+      if(myT.length>5) h+=`<div style="font-size:9px;color:var(--text2);padding:2px 5px">+${myT.length-5}</div>`;
+    } else if(!isPast){
+      myT.slice(0,3).forEach(t=>{ h+=`<div class="day-task dt-pend" title="${t.name}">${t.animal} ${t.name}</div>`; });
+    } else {
+      h+=`<div style="font-size:10px;color:var(--text2);padding:6px 5px;text-align:center">—</div>`;
+    }
+    h+=`</div>`;
+  }
+  h+=`</div></div>`;
+  h+=`<div class="week-legend">
+    <div class="leg-item"><div class="leg-dot" style="background:var(--green-l);border:1px solid var(--green)"></div>Effectuée</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--red-l);border:1px solid var(--red)"></div>En retard</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--gray-l);border:1px solid var(--border)"></div>Planifiée</div>
+  </div>`;
+  $('view-semaine').innerHTML=h;
+}
+
+// ── ADMIN ─────────────────────────────────────────────────────────────────────
+function renderAdmin(){
+  let h='';
+
+  // Suivi salariés
+  h+=`<div class="section-hd">👥 Suivi des salariés — aujourd'hui</div>`;
+  USERS.filter(u=>!u.admin).forEach(u=>{
+    const mt=TASKS.filter(t=>t.who===u.id);
+    const d=mt.filter(t=>t.done).length;
+    const l=mt.filter(t=>isLate(t)).length;
+    const obs=OBS[todayKey()+u.id]||'';
+    h+=`<div class="emp-card">
+      <div class="avatar" style="background:${u.col};color:${u.tc};width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0">${initials(u.name)}</div>
+      <div class="emp-body">
+        <div class="emp-name">${u.name}</div>
+        <div class="emp-role">${u.role}${u.tel?' · '+u.tel:''}</div>
+        <div class="pills">
+          <span class="pill pill-g">${d}/${mt.length} tâches</span>
+          ${l>0?`<span class="pill pill-r">⚠ ${l} en retard</span>`:''}
+          ${obs?`<span class="pill pill-g">📝 Obs. OK</span>`:`<span class="pill pill-a">📝 Obs. manquante</span>`}
+        </div>
+        ${obs?`<div class="obs-read">💬 "${obs}"</div>`:''}
+      </div>
+    </div>`;
+  });
+
+  // Alertes globales
+  h+=`<div class="section-hd">🔔 Paramètres des alertes</div>`;
+  h+=`<div class="param-row"><div class="param-label"><div class="param-lname">Alerte retard — délai (minutes)</div><div class="param-ldesc">Délai après la plage max avant alerte rouge</div></div><input class="param-input" type="number" value="0" min="0" max="60" id="alert-delay"> min</div>`;
+  h+=`<div class="param-row"><div class="param-label"><div class="param-lname">Rappel observation (heure)</div><div class="param-ldesc">Alerte si l'observation n'est pas saisie après cette heure</div></div><input class="param-input" type="time" value="17:00" id="obs-reminder"></div>`;
+  h+=`<div class="param-row"><div class="param-label"><div class="param-lname">Visibilité croisée des tâches</div><div class="param-ldesc">Les salariés voient les tâches des autres salariés</div></div><select class="param-input" id="cross-view"><option value="non">Non — chacun voit les siennes</option><option value="oui" selected>Oui — tous voient tout</option></select></div>`;
+
+  // Gestion tâches
+  h+=`<div class="section-hd">📋 Tâches du planning</div>`;
+  TASKS.forEach(t=>{
+    const who=getUser(t.who);
+    h+=`<div class="task-param">
+      <span style="font-size:20px">${t.animal}</span>
+      <div class="task-param-body">
+        <div class="task-param-name">${t.name}</div>
+        <div class="task-param-meta">👤 ${who?who.prenom:'?'} · ${slotLabel(t.slot)} · Plage : ${t.plageMin} → ${t.plageMax}</div>
+      </div>
+      <button class="del-btn" onclick="deleteTask(${t.id})">🗑</button>
+    </div>`;
+  });
+
+  // Ajout tâche
+  h+=`<div class="add-form">
+    <div class="add-form-title">➕ Ajouter une tâche</div>
+    <div class="form-grid">
+      <div class="full"><label class="flabel">Nom de la tâche</label><input class="finput" id="nt-name" placeholder="Ex : Nourrissage tortues"></div>
+      <div><label class="flabel">Salarié responsable</label><select class="fselect" id="nt-who">${USERS.filter(u=>!u.admin).map(u=>`<option value="${u.id}">${u.prenom}</option>`).join('')}</select></div>
+      <div><label class="flabel">Créneau</label><select class="fselect" id="nt-slot"><option value="matin">Matin</option><option value="midi">Midi</option><option value="soir">Soir</option><option value="continu">Continu</option></select></div>
+      <div><label class="flabel">Plage de début (heure)</label><input class="finput plage-input" id="nt-pmin" type="time" value="08:00"></div>
+      <div><label class="flabel">Plage de fin (heure)</label><input class="finput plage-input" id="nt-pmax" type="time" value="09:00"></div>
+      <div><label class="flabel">Emoji animal</label><input class="finput" id="nt-animal" placeholder="🐾" style="font-size:18px"></div>
+      <div class="full" style="display:flex;gap:10px;margin-top:4px">
+        <button class="save-btn" onclick="addTask()">✅ Ajouter au planning</button>
+      </div>
+    </div>
+  </div>`;
+
+  // Gestion salariés
+  h+=`<div class="section-hd">👤 Salariés enregistrés</div>`;
+  USERS.forEach(u=>{
+    h+=`<div class="emp-card">
+      <div class="avatar" style="background:${u.col};color:${u.tc};width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0">${initials(u.name)}</div>
+      <div class="emp-body">
+        <div class="emp-name">${u.name} ${u.admin?'👑':''}</div>
+        <div class="emp-role">${u.role}${u.tel?' · '+u.tel:''}${u.mail?' · '+u.mail:''}</div>
+        <div class="pills"><span class="pill pill-g">PIN : ${u.pin}</span>${u.admin?'<span class="pill" style="background:var(--amber-l);color:var(--amber)">Admin</span>':''}</div>
+      </div>
+    </div>`;
+  });
+
+  h+=`<div style="background:var(--green-l);border-radius:12px;padding:12px 14px;margin-top:8px;font-size:12px;color:var(--green-d)">
+    💡 <strong>Pour modifier les salariés, leurs PIN ou leurs rôles</strong> : demande à Claude de générer un nouveau fichier index.html avec les changements souhaités, puis remplace le fichier sur GitHub.
+  </div>`;
+
+  $('view-admin').innerHTML=h;
+}
+
+function deleteTask(id){
+  if(!confirm('Supprimer cette tâche du planning ?')) return;
+  TASKS=TASKS.filter(t=>t.id!==id);
+  renderAdmin();
+}
+
+function addTask(){
+  const name=($('nt-name').value||'').trim();
+  if(!name){ alert('Merci de saisir un nom de tâche.'); return; }
+  const who=$('nt-who').value;
+  const slot=$('nt-slot').value;
+  const pmin=$('nt-pmin').value||'08:00';
+  const pmax=$('nt-pmax').value||'09:00';
+  const animal=($('nt-animal').value||'🐾').trim()||'🐾';
+  TASKS.push({id:nextTaskId++,name,who,slot,heure:pmin,plageMin:pmin,plageMax:pmax,animal,done:false,doneAt:null});
+  renderAdmin();
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+buildLogin();
+setInterval(()=>{ if(STATE.user && STATE.tab==='jour') renderJour(); }, 60000);
+</script>
+
+
+</body></html>
